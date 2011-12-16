@@ -16,6 +16,9 @@ set shiftwidth=4
 
 set nocursorline
 
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_ 
+
 colorscheme delek 
 
 " Auto Complete
