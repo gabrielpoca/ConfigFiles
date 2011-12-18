@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#cat bashrc >> ~/.bashrc
-#cat vimrc >> ~/.vimrc
+cat bashrc >> ~/.bashrc
+cat vimrc >> ~/.vimrc
 
-#mkdir -p ~/.vim/tmp
+mkdir -p ~/.vim/tmp
 
 
-sudo ports install cmus
+#sudo ports install cmus

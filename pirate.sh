@@ -5,14 +5,14 @@ torrent=()
 
 arr_push() {
 	# replace spaces with _ and push to array
-	torrent=("${torrent[@]}" $(echo $@  | sed 's/\ /_/g'))
+	torrent=("${torrent[@]}" $(echo $@  | sed 's/\ /-/g'))
 }
 
 TMPFILE="tmp"
 TMPTORRENT="tmp_torrent"
 SEARCH=$(echo $@|sed 's/\ /%20/g')
 
-#wget "http://www.thepiratebay.org/search/$SEARCH/0/7/0" -O $TMPFILE -q
+wget "http://www.thepiratebay.org/search/$SEARCH/0/7/0" -O $TMPFILE -q
 
 while read line; do
 	# GET LINES TO PARSE
@@ -26,7 +26,7 @@ while read line; do
 	# GET SE AND LE
 	arr_push $(echo $line | sed -n 's/\<td align=\"right\"\>\(.*\)\<\/td\>/\1/ p')
 done < $TMPFILE
-#rm $TMPFILE
+rm $TMPFILE
 
 
 lenght=${#torrent[@]}
@@ -40,7 +40,7 @@ read input
 
 echo "DOWNLOADING: ${torrent[(($input*4+1))]}"
 
-#wget "http://www.thepiratebay.com${torrent[(($input*4+1))]}" -O $TMPTORRENT -q
+wget "http://www.thepiratebay.com${torrent[(($input*4+1))]}" -O $TMPTORRENT -q
 
 while read line; do
 	content=$(echo $line | sed -n 's/.*href\="\(.*\.torrent\)".*/\1/ p')
@@ -50,3 +50,4 @@ while read line; do
 		break
 	fi
 done < $TMPTORRENT
+rm $TMPTORRENT
