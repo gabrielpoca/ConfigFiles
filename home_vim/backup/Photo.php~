@@ -1,7 +1,0 @@
-<?php
-
-   class Photo extends AppModel {
-	  var $belongsTo = 'Fbuser';
-   }
-
-?>
