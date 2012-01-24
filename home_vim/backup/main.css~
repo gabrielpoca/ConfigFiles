@@ -1,0 +1,167 @@
+body {
+   margin: 0;
+   padding 0;
+   background: #FFF;
+   font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
+}
+
+
+/* HEADER CSS */
+
+#header-out {
+   width:100%;
+   background: #CFCFCF;
+   padding-top: 10px;
+}
+
+#header {
+   color: #000;
+   background: #EEE;
+   padding:0 0 0 0;  
+   margin: 0 auto;
+   width:950px;
+   height:35px;
+   border: 1px solid #CFCFCF;
+   border-bottom: none;
+}
+
+#header a:link, #header a:visited {
+   color:black;
+   text-decoration:none;
+}
+
+#header a:hover  {
+   color:white;
+}
+
+#header-log {
+   line-height: 35px;
+   padding:0 5px 0 5px;
+   margin: 0 5px 0 0;
+   vertical-align:middle;
+   float:right;
+}
+
+#header-submit {
+   border-left: 1px solid #CFCFCF;
+   padding:0 15px 0 15px;
+   float:left;
+   vertical-align:middle;
+   line-height:35px;
+}
+
+#header-username {
+   padding:0 5px 0 5px;
+   margin 2px 0 2px 0;
+   float:right;
+   line-height: 35px;
+   text-align: center;
+   border-right: 1px black solid;
+}
+
+#header-pic {
+   margin-top:2px;
+   padding:0 5px 0 5px;
+   line-height: 35px;
+   text-align:center;
+   vertical-align:middle;
+   float:right;
+}
+
+#header-pic img {
+   vertical-align:middle;
+   height:31px;
+}
+
+#header-title {
+   border-left: 1px solid #CFCFCF;
+   font-size:
+   vertical-align:middle;
+   line-height:35px;
+   width: 169px;
+   font-size:larger;
+   padding:0 15px 0 15px;
+   float: left;
+}
+
+/* CONTAINER: SIDEBER + SUBMIT + CONTENT + FOOTER */
+
+#container {
+   width:950px;
+   margin: 0 auto;
+   background: #fff;
+}
+
+/* RIGHT CONTAINER: SUBMIT + CONTENT */
+
+#right-container {
+   float:right;
+   border-left: 1px solid #CFCFCF;
+   width: 749px;
+}
+
+
+/* CONTENT */
+
+#content {
+   padding: 0 10px 0 10px;
+   background: #fff;
+   width:729px;
+}
+
+/* SUBMIT */
+
+#submit {
+   background: #eee;
+   padding: 10px;
+   width:729px;
+}
+
+#submit a:link, #submit a:visited {
+   text-decoration: none;
+   color:black;
+}
+
+#submit a:hover {
+   color: white;
+}
+
+
+#submit input {
+   width:590px;
+}
+
+#submit button {
+   width:70px;
+}
+
+/* SIDEBAR */
+
+#sidebar {
+   background: #FFF;
+   float:left;
+   width:180px;
+   padding: 0 10px 0 10px;
+}
+
+/* FOOTER */ 
+
+#footer {
+   border-top: 1px solid #CFCFCF;
+   margin: 0 auto;
+   width: 950px;
+   text-align: center;
+   background: #fff;
+   font-size: small;
+   padding: 5px 0 5px 0;
+}
+
+
+.clear {
+   display:block;
+   clear:both;
+}
+
+.small {
+	font-size: small;
+}

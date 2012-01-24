@@ -1,0 +1,7 @@
+<?php
+
+   class Fbuser extends AppModel {
+		var $hasMany = array('Photo');
+   }
+
+?>

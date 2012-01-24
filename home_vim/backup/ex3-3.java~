@@ -1,0 +1,73 @@
+
+class EX33 {
+
+	public static void main(String[] argv) {
+		try {
+		Barrier b = new Barrier(5, 5);
+		Thread[] t = new Thread[5];
+		for(int i = 0; i < t.length; i++) 
+			t[i] = new Thread( new Car(b, 5, i) );
+		for(int i = 0; i < t.length; i++) 
+			t[i].start();
+		for(int i = 0; i < t.length; i++)
+			t[i].join();
+		} catch (InterruptedException e) {
+		}
+	}
+
+}
+
+
+class Barrier {
+
+	final int N;
+	final int STAGES;
+	int _stage;
+	int _wait;
+
+	public Barrier(int _n, int _stages) {
+		N = _n;
+		STAGES = _stages;
+		_stage = 0;
+	}
+
+	public int getStage() {
+		return _stage;
+	}
+
+	public  synchronized void barrier() {
+		try  {
+		int local = _stage;
+		_wait++;
+		if(_wait < N) {
+			while(local == _stage)
+				wait();
+		} else {
+			_wait = 0;
+			_stage++;
+			notifyAll();
+		}
+		} catch (InterruptedException e) {
+		}
+	}
+}
+
+class Car extends Thread {
+
+	final int N;
+	Barrier _b;
+	int _index;
+
+	public Car(Barrier b, int n, int index) {
+		N = n;
+		_b = b;
+		_index = index;
+	}
+
+	public void run() {
+		while(_b.getStage() != N) {
+			System.out.println("Car "+_index+" starging stage "+_b.getStage());
+			_b.barrier();
+		}
+	}
+}

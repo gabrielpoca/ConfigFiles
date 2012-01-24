@@ -1,0 +1,97 @@
+import java.util.*;
+
+class EX32 {
+	public static void main(String[] argv) {
+
+		Box b = new Box(1);
+
+		Thread p = new Thread( new Putter(b, 1000) );
+		Thread g = new Thread( new Getter(b, 1000) );
+
+		p.start();
+		g.start();
+
+		try {
+			p.join();
+			g.join();
+		} catch (InterruptedException e) {
+		}
+	}
+}
+
+
+class Box {
+
+	int _size;
+	int _index;
+	int[] _box;
+
+	public Box(int size) {
+		_size = size;
+		_box = new int[_size];
+		_index = 0;
+	}
+
+	public synchronized void put(int value) throws InterruptedException {
+		while(_index == _size) 
+			wait();
+		_box[_index] = value;
+		_index++;
+		notifyAll();
+	}
+
+	public synchronized int get() throws InterruptedException {
+		while(_index == 0) 
+			wait();
+		_index--;
+		notifyAll();
+		return _box[_index];
+	}
+}
+
+class Getter extends Thread {
+
+	Box _box;
+	int _times;
+
+	public Getter(Box box, int times) {
+		_times = times;
+		_box = box;
+	}
+
+	public void run() {
+		try {
+			Random gen = new Random();
+			for(int i = 0; i < _times; i++) {
+				System.out.println("Getting "+_box.get());
+				this.sleep(gen.nextInt(3000));
+			}
+		} catch (InterruptedException e) {
+		}
+	}
+}
+
+
+class Putter extends Thread {
+
+	Box _box;
+	int _times;
+
+	public Putter(Box box, int times) {
+		_times = times;
+		_box = box;
+	}
+
+	public void run() {
+		try {
+			Random gen = new Random();
+			for(int i = 0; i < _times; i++) {
+				int next = gen.nextInt(999);
+				System.out.println("Puttin "+next);
+				_box.put(next);
+				this.sleep(gen.nextInt(3000));
+			}
+		} catch (InterruptedException e) {
+		}
+	}
+}

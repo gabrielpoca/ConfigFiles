@@ -1,0 +1,27 @@
+<h1>Profile</h1>
+
+<table>
+   <tr>
+	  <td>id</td>
+	  <td><?=$user_data['id'];?></td>
+   </tr>
+   <tr>
+	  <td>Name:</td>
+	  <td><?=$user_data['name'];?></td>
+   </tr>
+</table>
+
+<?php foreach($user_photos as $photo): ?>
+<div class="gallery-img-out">
+   <div class="gallery-img">
+	  <a href="<?=$this->Html->url(array('controller'=>'photos', 'action'=>'view', $photo['Photo']["id"]));?>"><img src="<?=$photo['Photo']['picture'];?>" /></a>
+   </div>   
+   <div class="clear"></div>
+   <span class="like-count, small">likes: <?=$photo['Photo']['count']?></span>
+   <a href="#" onClick="submitLike('<?=$photo['Photo']['id'];?>');">
+	  <span class="small">+1</span>
+   </a>
+</div>
+<?php endforeach; ?>
+
+

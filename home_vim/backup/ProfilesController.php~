@@ -1,0 +1,33 @@
+<?php
+
+   class ProfilesController extends AppController {
+
+	  var $uses = array();
+	  var $components = array('RequestHandler');
+
+	  /** 
+	  * Name: beforeFilter 
+	  * Desc: Performs necessary steps and function calls prior to executing 
+	  *       any view function calls. 
+	  */  
+	  function beforeFilter() {  
+		 parent::beforeFilter();
+		 /* If it is ajax request don't load template. */
+		 if($this->RequestHandler->isAjax()){
+			$this->layout=null;
+		 }
+	  }  
+
+	  function index() {
+		 if($id != null) {
+			// TODO
+		 }
+	  }
+
+	  function photos() {
+		 // TODO
+	  }
+
+   }
+
+?>

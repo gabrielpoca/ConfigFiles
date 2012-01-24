@@ -1,0 +1,81 @@
+<?php
+
+   class FbusersController extends AppController {
+
+	  var $uses = array('Fbuser', 'Like', 'Photo');
+	  var $components = array('RequestHandler');
+	  var $scaffold;
+
+	  function beforeFilter() {
+		 parent::beforeFilter();
+		 /* If it is ajax request don't load template. */
+		 if($this->RequestHandler->isAjax()){
+			$this->layout=null;
+		 }
+	  }
+
+	  /**
+	  * view logged user information.
+	  */
+	  function view($id = null) {
+		 if($id != null) {
+			$this->Fbuser->unbindModel(array('hasMany' => array('Like', 'Photo')));
+			$data = $this->Fbuser->findById($id);
+			// All photos associated to theyr like count
+			$photos = $this->Photo->query("SELECT Photo.id, Photo.name, Photo.picture, Photo.source, Photo.link, Photo.fbuser_id, Photo.fbuser_comment, count(*) AS \"Photo.count\" FROM photos Photo, likes Likes WHERE Photo.id = Likes.photo_id AND Likes.fbuser_id = $id GROUP BY Photo.id");
+			$this->set('user_data', $data['Fbuser']);
+			$this->set('user_photos', $photos);
+		 }
+	  }
+
+	  /* Facebook Login Methods. */
+
+	  /**
+	  * user facebook login.
+	  */
+	  function login() {
+		 $this->autoRender = false;
+		 $params = array(
+			'scope' => 'user_photos, friends_photos, user_photo_video_tags, friends_photo_video_tags',
+			'redirect_uri' => 'http://localhost/hotbook/site/fbusers/callback/'
+		 );
+		 $this->redirect($this->facebook->getLoginUrl($params));
+	  }
+
+	  /**
+	  * user facebook logout.
+	  */
+	  function logout() {
+		 $this->autoRender = false;
+		 $this->facebook->destroySession();
+		 $params = array( 'next' => 'http://localhost/hotbook/site/main/' );		
+		 $this->redirect($this->facebook->getLogoutUrl($params));
+	  }
+
+	  /**
+	  * facebook login callback.
+	  * stores the user in the database if not already.
+	  */
+	  function callback() {
+		 /*$this->autoRender = false;	
+		 $this->facebook->getAccessToken();
+
+		 $newUser = $this->Fbuser->create();
+		 $data = $this->facebook->api('/me');
+		 $newUser['Fbuser']['id'] = $data['id'];
+		 $newUser['Fbuser']['name'] = $data['name'];
+		 $newUser['Fbuser']['picture'] = 'https://graph.facebook.com/'.$data['username'].'/picture';
+		 $this->Fbuser->save($newUser);
+		 */
+
+		 //$this->redirect(array('controller' => 'fbusers', 'action' => 'index'));
+		 $this->redirect('http://localhost/hotbook/site/');
+	  }
+
+	  function red() {
+		 $this->autoRender = false;
+		 $this->redirect(array('controller' => 'fbusers', 'action' => 'index'));
+	  }
+
+   }
+?>

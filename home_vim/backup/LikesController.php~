@@ -1,0 +1,23 @@
+<?php
+
+   class LikesController extends AppController {
+	  var $uses = array('Like');
+
+	  function beforeFilter() {
+		 parent::beforeFilter();
+		 $this->autoRender = false;
+		 $this->layout = null;
+	  }
+
+	  function add($photo_id = null) {
+		 $this->autoRender = false;
+		 if($photo_id != null) {
+			$user_id = $this->facebook->getUser();
+			$newLike = $this->Like->create();
+			$newLike['photo_id'] = $photo_id;
+			$newLike['fbuser_id'] = $user_id;
+			$this->Like->save($newLike);
+		 }
+	  }
+   }
+?>

@@ -79,7 +79,7 @@ nmap <silent> <C-N> :silent noh<CR>
 " Toggle NERDTree
 map nt :NERDTreeToggle<cr>
 " Save document
-map <C-S> :w<cr>
+map <C-W> :w<cr>
 
 let g:user_zen_expandabbr_key = '<c-e>'
 

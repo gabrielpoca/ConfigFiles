@@ -1,0 +1,53 @@
+<?php
+
+   App::import('Vendor','Facebook/facebook');
+
+   class AppController extends Controller {
+
+	  // for user information.
+	  var $uses = array('Fbuser');
+
+	  // facebook variable.
+	  var $facebook;
+	  // logged in user id. 0 in case of none.
+	  var $user;
+
+	  // facebook app variables.
+	  var $__fbApiKey = '199434696776148';
+	  var $__fbSecret = '6c34f288c3ff35cd8e53993a4d5a9a9b';
+
+	  function beforeFilter() {  
+		 parent::beforeFilter();  
+
+		 // Prevent the 'Undefined index: facebook_config' notice from being thrown.  
+		 $GLOBALS['facebook_config']['debug'] = NULL;  
+
+		 // Create a Facebook client API object.  
+		 $this->facebook = new Facebook(array(
+			'appId'  => $this->__fbApiKey,
+			'secret' => $this->__fbSecret,
+			'cookie' => true
+		 ));
+
+		 /* set user information to the layout. */
+		 $this->user = $this->facebook->getUser();
+		 $this->set('user', $this->user);	
+
+		 /* if there is a user logged in. */
+		 if($this->user) {
+
+			/* load user infor from facebook.
+			$user_profile = $this->facebook->api('/me');
+			$this->set('user_profile', $user_profile);
+			$this->set('user_photo', 'https://graph.facebook.com/'.$user_profile['username'].'/picture?type=normal');
+			*/
+
+			/* load user info from database. */
+			$user = $this->Fbuser->findById($this->user);
+			$this->set('user_photo', $user['Fbuser']['picture']);
+		 }
+	  }
+
+   }
+
+?>
