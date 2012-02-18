@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# configuration
+download_folder="/Users/gabrielpoca/Downloads/"
+
 # array to store torrents info
 torrent=()
 
@@ -12,7 +16,7 @@ TMPFILE="tmp"
 TMPTORRENT="tmp_torrent"
 SEARCH=$(echo $@|sed 's/\ /%20/g')
 
-wget "http://www.thepiratebay.org/search/$SEARCH/0/7/0" -O $TMPFILE -q
+wget "http://www.thepiratebay.se/search/$SEARCH/0/7/0" -O $TMPFILE -q
 
 while read line; do
 	# GET LINES TO PARSE
@@ -26,7 +30,6 @@ while read line; do
 	# GET SE AND LE
 	arr_push $(echo $line | sed -n 's/\<td align=\"right\"\>\(.*\)\<\/td\>/\1/ p')
 done < $TMPFILE
-rm $TMPFILE
 
 
 lenght=${#torrent[@]}
@@ -38,16 +41,20 @@ done
 echo -n "TORRENT TO DOWNLOAD: "
 read input
 
-echo "DOWNLOADING: ${torrent[(($input*4+1))]}"
+#echo "DOWNLOADING: ${torrent[(($input*4+1))]}"
 
-wget "http://www.thepiratebay.com${torrent[(($input*4+1))]}" -O $TMPTORRENT -q
+wget "http://thepiratebay.se${torrent[(($input*4+1))]}" -O $TMPTORRENT -q
 
 while read line; do
 	content=$(echo $line | sed -n 's/.*href\="\(.*\.torrent\)".*/\1/ p')
 	if [ "$content" != "" ]; then
-		echo $content;
-		wget "$content" -q
+		echo "DOWNLOADING $content"
+		wget "$content" -O "$download_folder$(echo $content | sed -n 's/.*\/\([^/]*torrent\)/\1/p')" -q
 		break
 	fi
 done < $TMPTORRENT
+echo "COMPLETED"
+
+# DELETE TEMPORARY FILES
+rm $TMPFILE
 rm $TMPTORRENT
