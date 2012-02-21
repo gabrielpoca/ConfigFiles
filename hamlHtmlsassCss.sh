@@ -6,7 +6,7 @@
 #################################################
 
 # README
-# This script converts haml files to html with the haml gem.
+# This script converts haml files to html and sass files to css with the haml gem.
 # Run it with the names of the files to convert or without any name to convert all.
 
 hamlToHtml() {
