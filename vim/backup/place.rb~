@@ -1,8 +1,0 @@
-class Place < ActiveRecord::Base
-  belongs_to :event
-
-  def parse_calculator_time(hash)
-    DateTime.parse("#{hash['time1i']}-#{hash['time2i']}-#{hash['time3i']} #{hash['time4i']}:#{hash['time5i']}")
-  end
-
-end

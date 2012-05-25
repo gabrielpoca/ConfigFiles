@@ -1,4 +1,0 @@
-<div id="page-login" style="text-align:justify">
-   <h3>Login</h3>
-   <p>O login é fundamental para a submissão de imagens. Pelas permissções requisistadas é possivel inferir que o TwoHotGrils não terá acesso a qualquer informação relevante do utilizador. Para efectuar o login na aplicação carregue <?=$this->Html->link('link', array('controller' => 'fbusers', 'action' => 'login'));?>.</p>
-</div>

@@ -1,3 +1,0 @@
-#!/bin/bash
-# http://thememymac.com/2009/geektool/geektool-all-the-scripts-i-could-find-explained-for-beginners/
-echo 'tell application "Mail" to return unread count of inbox as string & ""' | osascript

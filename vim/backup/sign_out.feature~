@@ -1,7 +1,0 @@
-Feature: Signout
-
-	Scenario: Signout
-		Given Email 'test_repeated' is registed		
-		And I am authenticated as 'test@email.com'
-		When I click on 'Sign Out'
-		Then I should not be authenticated

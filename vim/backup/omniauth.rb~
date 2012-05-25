@@ -1,4 +1,0 @@
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, '345095095547911', '8fbe0972e49728442cf607cfcb6b4cca', :scope => 'email, offline_access, read_stream'
-
-end

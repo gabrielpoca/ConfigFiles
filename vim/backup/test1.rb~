@@ -1,4 +1,0 @@
-require 'ncurses'
-require 'logger'
-require 'rbcurse'
-require 'rbcurse/rwidget'

@@ -1,8 +1,0 @@
-<h3>Contact Form</h3>
-<?php
-   echo $this->Form->create();
-   echo $this->Form->input();
-   echo $this->Form->input();
-   echo $this->Form->input();
-   echo $this->Form->end('Send');
-?>

@@ -1,6 +1,0 @@
-<?php
-
-   class Report extends AppModel {
-		var $belongsTo = array('Fbuser', 'Photo');
-	  }
-   ?>

@@ -1,9 +1,0 @@
-pertence(X,[X|_]).
-pertence(X,[_|R]):- pertence(X,R).
-
-maximo(X,[X]).
-maximo(X,[X|R]):-maximo(Y,R), X >= Y.
-maximo(X,[Y|R]):-maximo(X,R), X > Y.
-
-comprimento(0,[]).
-comprimento(X,[_|T]):- comprimento(X1,T), X is X1+1.

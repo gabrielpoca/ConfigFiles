@@ -1,5 +1,0 @@
-#!/bin/bash
-FILES=$( find $PWD | grep xmp )
-for f in $FILES; do
-	rm $f
-done

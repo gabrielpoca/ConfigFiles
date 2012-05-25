@@ -1,8 +1,0 @@
-check_hash = yes
-directory = /Users/gabrielpoca/Torrents/
-session = /Users/gabrielpoca/Torrents/.session/
-encryption = allow_incoming,try_outgoing,enable_retry
-dht = auto
-dht_port = 6881
-peer_exchange = yes
-schedule = watch_directory,10,10,load_start=/Users/gabrielpoca/Torrents/watch/*.torrent
