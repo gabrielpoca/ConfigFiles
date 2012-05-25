@@ -1,0 +1,5 @@
+<script>
+	chrome.tabs.getSelected(null, function(tab) {
+		alert("HERE");
+	});
+</script>

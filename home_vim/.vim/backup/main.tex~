@@ -1,0 +1,79 @@
+\documentclass{llncs}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Comentar para not MAC Users
+\usepackage[applemac]{inputenc}
+\usepackage[portugues]{babel}
+
+\usepackage{a4}
+%\usepackage[margin=3cm,nohead]{geometry}
+\usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{amsmath}
+%\renewcommand{\baselinestretch}{1.5}
+
+% Para ter os objectos no sitio que se pretende com o H.
+\usepackage{float}
+
+% Indentar automaticamente
+\usepackage{indentfirst}
+
+
+\begin{document}
+\mainmatter
+\title{Voice over Internet Protocol}
+
+\titlerunning{Voice over Internet Protocol}
+
+\author{Gabriel Po\c ca \and Marco Ribeiro \and Rafael Pinto}
+
+\authorrunning{Gabriel Po\c ca \and Marco Ribeiro \and Rafael Pinto}
+
+\institute{
+University of Minho, Department of  Informatics, 4710-057 Braga, Portugal\\
+e-mail: \{a56974,a54754,a54777\}@alunos.uminho.pt
+}
+
+\date{}
+\bibliographystyle{splncs}
+
+\maketitle
+\begin{abstract}		
+\end{abstract}
+
+% IntroduÁ„o
+\section{IntroduÁ„o}
+
+
+%UNCOMMENT se necessário
+%De acordo com o ilustrado na Figura~\ref{fig:controller}
+%% Exemplo para inserção de uma figura
+%\begin{figure}
+%\begin{center}
+%\includegraphics[scale=0.40]{figura.pdf} 
+%\end{center}
+%\caption{\label{fig:controller}Architecture of the unified QoS metric fuzzy controller.}
+%\end{figure} 
+
+%\section{Simulation Scenario}
+
+\section{Conclusıes}
+
+
+%UNCOMMENT para a bibliografia 
+%% ficheirodebibliografia.bib
+%\bibliography{ficheirodebibliografia}
+
+%ou inserir directamente os v·rios \bibitem 
+
+\begin{thebibliography}{1}
+
+\bibitem{korea}
+Jeong Ho Kwaka, Bong Gyou Leeb:
+\newblock{Estimating demand curve in the Korean VoIP telecommunications market}
+
+\end{thebibliography}
+
+\end{document}

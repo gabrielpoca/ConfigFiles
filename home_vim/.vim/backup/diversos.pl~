@@ -1,0 +1,28 @@
+adicionar(X,L,[X|L]).
+
+eliminar(X,[X|R],[R]).
+eliminar(X,[Y|R],[Y|R1]):- X \== Y, eliminar(X,R,R1).
+
+eliminar2(X,[],[]).
+eliminar2(X,R,R1):- eliminar2(X,R,R1).
+
+eliminar-todos(X,[],[]).
+eliminar-todos(X,[X|R],R1):- eliminar-todos(X,R,R1).
+eliminar-todos(X,[Y|R],[X|R1]):- X \== Y, eliminar-todos(X,R,R1).
+
+primeiro(X,[X|_]).
+
+ultimo(X,[X]).
+ultimo(X,[_|R]):- ultimo(X,R).
+
+permutar([],[]).
+permutar([X|R],R2):- permutar(R,R1), eliminar(X,R2,R1).
+
+e_ordenar([]).
+e_ordenar([x]).
+e_ordenar([X,Y|R]):- X <= Y, e_ordenar([Y|R]).
+
+qs([],[]).
+qs([X|R],S):-
+	particao(X,R,L1,L2), qs(L1,S1), qs(L2,S2), concatenar(S1,[X|S2],S).
+

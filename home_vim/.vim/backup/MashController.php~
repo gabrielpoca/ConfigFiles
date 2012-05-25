@@ -1,0 +1,7 @@
+<?php
+
+   class MashController extends AppController {
+	  var $uses = 'Mash';
+	  var $scaffold;
+   }
+?>

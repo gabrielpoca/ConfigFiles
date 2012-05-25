@@ -1,0 +1,54 @@
+/* HEADER */
+.content-header {
+   padding: 20px 10px 50px 10px;
+   line-height: 30px;
+   text-align: middle;
+}
+
+.content-header .left {
+   font-weight: bold;
+   float: left;
+   font-size: x-large;
+}
+
+.content-header .right {
+   float: right;
+}
+
+.content-header .sort a:hover {
+	color: #FF9900;
+	text-decoration: none;
+}
+.content-header .sort a {
+	color: #CFCFCF;
+	text-decoration: none;
+}
+
+/* GRID */
+
+.grid-item-out {
+   width: 25%;
+   float: left;
+   text-align: center;
+}
+
+/* FOOTER */
+.content-footer {
+   padding: 20px 15px 20px 0;
+   float: right;
+}
+
+.content-footer a {
+   color: black;
+   text-decoration: underline;
+}
+
+.content-footer a:hover {
+   color: #FF9900;
+}
+
+.delete a {
+	padding: 5px;
+	color: #CBCBCB;
+	text-decoration: none;
+}

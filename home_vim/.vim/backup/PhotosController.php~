@@ -1,0 +1,174 @@
+<?php
+
+   class PhotosController extends AppController {
+	  var $scaffold;
+	  var $uses = array('Photo', 'Comment', 'Mash');
+	  var $components = array('RequestHandler');
+
+
+	  var $paginate = array(
+		 'Photo' => array(
+			'limit' => 12,
+			'order' => array(
+			   'Photo.created' => 'desc'
+			)
+		 )
+	  );
+
+	  function beforeFilter() {
+		 parent::beforeFilter();
+		 $restricted = array('hotmash', 'delete', 'submitMash');
+		 if(!$this->user && in_array($this->request->params['action'], $restricted)) {
+			$this->redirect(array('controller' => 'pages', 'action' => 'login'));
+		 }
+		 /* If it is ajax request don't load template. */
+		 if($this->RequestHandler->isAjax()){
+			$this->layout=null;
+		 }
+	  }
+
+	  function hotmash() {
+		 if(!$this->RequestHandler->isAjax()) {
+			$this->layout = 'hotmash';
+		 }
+		 $photo1 = $this->Photo->find('first',array('order' => 'rand()'));
+		 $photo2 = $photo1;
+		 while($photo2 == $photo1) {
+			$photo2 = $this->Photo->find('first',array('order' => 'rand()'));
+		 }
+		 $this->set('photo1', $photo1);
+		 $this->set('photo2', $photo2);
+	  }
+
+	  function expectedScore($winner, $loser) {
+		 return (1 / (1 + pow(10,(($loser - $winner) / 400))));
+	  }
+
+	  function ratingChange($result, $expected) {
+		 return 10*($result - $expected);
+	  }
+
+	  function submitMash($winner, $loser) {
+		 $this->autoRender = false;
+		 $wHR = $this->Photo->findById($winner, array('fields' => 'hr'));
+		 $lHR = $this->Photo->findById($loser, array('fields' => 'hr'));
+		 $eW = $this->expectedScore($wHR['Photo']['hr'], $lHR['Photo']['hr']);
+		 $eL = $this->expectedScore($wHR['Photo']['hr'], $lHR['Photo']['hr']);
+		 $nWHR = $wHR['Photo']['hr'] + $this->ratingChange(1, $eW);
+		 $nLHR = $lHR['Photo']['hr'] + $this->ratingChange(0, $eL);
+		 $this->Photo->id = $winner;
+		 $this->Photo->saveField('hr', $nWHR);
+		 $this->Photo->id = $loser;
+		 $this->Photo->saveField('hr', $nLHR);
+		 $newMash = $this->Mash->create();
+		 $newMash['fbuser_id'] = $this->user;
+		 $newMash['hot_id'] = $winner;
+		 $newMash['nothot_id'] = $loser;
+		 $this->Mash->save($newMash);
+	  }
+
+	  function index() {
+		 $this->set('number', $this->paginate['Photo']['limit']);
+		 $userid = $this->user;
+		 $photos = $this->paginate('Photo', array('fbuser_id' => $userid));
+		 $this->set('photos', $photos);
+	  }
+
+	  function delete($id = null) {
+		 if($id != null) {
+			$query = "UPDATE photos SET deleted = '1' WHERE id = $id";
+			$this->Photo->query($query);
+			$this->Session->setFlash('Deleted!');
+		 }
+		 else {
+			$this->Session->setFlash('Error!');
+		 }
+		 $this->redirect(array('controller' => 'photos', 'action' => 'index'));
+	  }
+
+	  function submit() {
+		 $this->autoRender = false;
+		 if($this->user != 0) {
+			$newPhoto = $this->Photo->create();
+			$newPhoto['id'] = $_REQUEST['id'];
+			$newPhoto['name'] = $_REQUEST['name'];
+			$newPhoto['user'] = $_REQUEST['user'];
+			$newPhoto['source'] = $_REQUEST['source'];
+			$newPhoto['link'] = $_REQUEST['link'];
+			$newPhoto['hr'] = '1500';
+			$newPhoto['fbuser_id'] = $this->user;
+			$newPhoto['deleted'] = '0';
+			$this->addPhoto($newPhoto);
+		 }
+	  }
+
+	  /** 
+	  * add a photo to the database.
+	  * id: photo facebook id.
+	  */
+	  function add($id = null, $avaliable = false, $comment = null) {
+		 $this->autoRender = false;
+		 /* if there is a photo to insert and user is logged in.*/
+		 if($id != null && $this->user) {
+			$data = $this->facebook->api("/$id");
+			$newPhoto = $this->Photo->create();
+			$newPhoto['id'] = $data['id'];
+			$newPhoto['name'] = $data['from']['name'];
+			$newPhoto['user'] = $data['from']['id'];
+			$newPhoto['source'] = $data['source'];
+			$newPhoto['width'] = $data['width'];
+			$newPhoto['height'] = $data['height'];
+			$newPhoto['link'] = $data['link'];
+			$newPhoto['hr'] = '1500';
+			$newPhoto['fbuser_id'] = $this->user;
+			$newPhoto['fbuser_comment'] = $comment;
+			$newPhoto['deleted'] = '0';
+			if($avaliable) {
+			   $newPhoto['available'] = 1;
+			} else {
+			   $newPhoto['available'] = 0;
+			}
+			$this->Photo->set($newPhoto);
+			if($this->Photo->validates()) {
+			   $this->addPhoto($newPhoto);
+			} else {
+			   echo "-1";
+			}
+		 } else {
+			echo $this->user;
+		 }
+	  }
+
+	  function addPhoto($newPhoto = null) {
+		 if($newPhoto != null) {
+			$photo = $this->Photo->findById($newPhoto['id']);
+			if($photo) {
+			   if($photo['Photo']['deleted'] == "1" ) {
+				  //$this->Photo->id($newPhoto['id']);
+				  //$this->Photo->saveField('fbuser_id', $this->user);
+				  $this->Photo->query("UPDATE photos SET deleted = '0' AND fbuser_id = $this->user WHERE id = {$newPhoto['id']}");
+				  echo "-3";
+			   } else {
+				  echo "-2";
+			   }
+			} else {
+			   $this->Photo->save($newPhoto);
+			   echo $this->user;
+			}
+		}
+	 }
+
+
+	  function view($id = null) {
+		 if($id != null) {
+			//$this->set('photo', $this->Photo->findById($id));
+			$photo= $this->Photo->query("SELECT Photo.id, Photo.hr, Photo.user, Photo.name, Photo.source, Photo.link, Photo.created, Photo.fbuser_comment, Fbuser.id, Fbuser.name, (SELECT count(*) FROM likes WHERE likes.photo_id = Photo.id) AS count, (SELECT count(*) FROM likes WHERE likes.photo_id = Photo.id AND likes.fbuser_id = Fbuser.id) AS liked FROM photos Photo, fbusers Fbuser WHERE Photo.fbuser_id = Fbuser.id AND Photo.id = $id");
+			$this->Comment->unBindModel(array('belongsTo' => array('Fbuser', 'Photo')));
+			$this->Comment->order = 'created DESC';
+			$this->set('comments', $this->Comment->find('all', array('conditions' => array('Comment.photo_id' => "$id"))));
+			$this->set('photo', $photo[0]);
+		 }
+	  }
+   }
+
+?>

@@ -1,0 +1,11 @@
+typedef struct graph_element {
+	int cost;
+	int distance;
+	int orig;
+	int dest;
+} GRAPH_ELEMENT;
+
+typedef struct graph {
+	int name;
+	struct graph_element *elements;
+}

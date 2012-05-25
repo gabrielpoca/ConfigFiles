@@ -1,0 +1,102 @@
+.gl-item {
+   float:left;
+}
+
+.grid-item-photo {
+   width: 142px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.gl-img-border {
+   padding:5px;
+   background:white;
+   /*border-style:solid;
+   border-width:1px;
+   border-color: #8B8B8B;*/
+   width:132px;
+}
+
+.gl-img img {
+   max-width: 130px;
+   max-height: 132px;
+   vertical-align: middle;
+}
+
+.gl-img {
+   text-align: center;
+   border-width: 1px;
+   border-style: solid;
+   background: rgb(238, 238, 238);
+   border-color:#8B8B8B;
+   position: relative;
+   width:130px;
+   height:132px;
+   display:inline-block;
+   vertical-align: middle;
+}
+
+.gl-img-border a:link, .gl-img-border a:visited {
+   text-decoration:none;
+   color: #CBCBCB;
+}
+
+.gl-img-border:hover {
+	background-color: #FF9900;
+}
+
+.gl-img-border:hover a {
+	color: yellow;
+}
+
+.gl-desc {
+   padding: 2px 0 0 0;
+}
+
+.gl-desc .left {
+   padding: 0 2px 0 2px;
+   float: left;
+}
+
+.gl-desc .right {
+   padding: 0 2px 0 2px;
+   float: right;
+}
+
+/* BUTTONS */
+
+.grid-item-buttons {
+   float: left;
+}
+
+.grid-item-buttons ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+.grid-item-buttons ul li {
+   width: 15px;
+   height: 15px;
+   padding: 5px 5px 0 5px;
+}
+
+.grid-item-buttons ul a:link, .grid-item-buttons ul a:visited {
+	opacity: 0.5;
+	color: #CFCFCF;
+	text-decoration: none;
+}
+
+.grid-item-buttons ul a:hover {
+	opacity: 1;
+	color: #FF9900;
+}
+
+.grid-item-buttons ul li img {
+   	width: 20px;
+	opacity: 0.00001;
+}
+
+.grid-item-buttons ul li img:hover {
+	opacity: 1;
+}

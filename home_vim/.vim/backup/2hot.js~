@@ -1,0 +1,3 @@
+alert("HERE");
+chrome.tabs.getSelected(null, function(tab) {
+});

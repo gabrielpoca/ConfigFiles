@@ -1,0 +1,17 @@
+--- 
+published: true
+tags: [linux, macbook]
+title: How to install Ubuntu on a MacbookPro
+layout: post
+---
+I've been waiting for a while to try a linux installation on my macbook pro. Now I have triple boot with Lion, Windows 7 and Ubuntu. I'll probably just it a few times for specific tasks, mostly because the battery, witch gives about 3 hours on Ubuntu against about 6 on Lion. I've installed Windows 7 a long time ago using bootcamp. So this are the steps I followed:
+
+1. Install and enable [refit](http://refit.sourceforge.net/).
+2. Download your Ubuntu image and "burn" it to usb with [unetbootin](http://unetbootin.sourceforge.net).
+3. Reboot with the usb inserted, and chose "Partition Tools" in refir. It will ask to update the partition table, do it. Then it reboots again.
+4. When it opens again chose to start up from Ubuntu usb (you should see it side with OSX).
+5. Proceed normally with the installation.
+
+<p style="text-align:justify;">You should pay attention if it asks to chose the place to install GRUB. In my installation it didn't ask and everything went well, but in arch linux wiki they talk about related problems. Anyway, just don't replace the MBR. Also I tried Ubuntu because of the support, but I'll probably try something else line <a title="crunchbang" href="http://crunchbanglinux.org/" target="_blank">crunch bang</a> soon.</p>
+
+Everything works fine. The trackpad is strange, or different, it does not really behave like in OSX, but I could get use to it. Also there are some minor issues on the keyboard light keys, but nothing that annoying. Just take a look around this <a title="Ubuntu MacBookPro8-2" href="https://help.ubuntu.com/community/MacBookPro8-2/Oneiric" target="_blank">here</a>, or <a title="Ubuntu MacBookPro" href="https://wiki.ubuntu.com/MactelSupportTeam/CommunityHelpPages" target="_blank">here</a> if you're macbook pro isn't from late 2011.

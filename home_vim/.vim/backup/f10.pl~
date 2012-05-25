@@ -1,0 +1,41 @@
+:- set_prolog_flag( discontiguous_warnings,off ).
+:- set_prolog_flag( single_var_warnings,off ).
+:- set_prolog_flag( unknown,fail ).
+
+nao10(Q):- Q, !, fail.
+nao10(Q).
+
+demo10(A,Q):- propriedades10(A,T), prova10(Q,T).
+demo10(A,Q):- propriedades10(A,T), nao10(pertence10(Q,T)), e_um10(A,D), demo10(D,Q).
+
+prova10(Q,[Q|T]).
+prova10(Q,[(Q:-Condicoes)|T]):- Condicoes.
+prova10(Q,[X|T]):- Q \== X, prova10(Q,T).
+
+pertence10([H|_], H).
+pertence10([_|T], H):- pertence10(T,H).
+
+somar10([], 0).
+somar10([H|T], X):- somar10(T,R), X is H+R.
+
+crialista10(C, 1, [C]).
+crialista10(C, L, [C|Lista]):- LT is L - 1, crialista10(C, LT, Lista).
+
+comprimento10([],0).
+comprimento10([H|T], R):- comprimento10(T,X), R is X+1.
+
+propriedades10(poligono(Lista), [(descricao:- comprimento10(Lista, X), write('Poligono com'), write(X), write('lados.')), (perimetrop(P):- somar10(Lista, P))]).
+
+propriedades10(rectangulo(L1,L2), [(descricao:- A is L1*L2, write('Rectangulo de area '), write(A)), (area(A):- A is L1*L2)]).
+
+propriedades10(polregular(L,N), [(descricao:- P is N*L, write('Poligono Regular com '), write(N), write(' lados de tamanho '), write(L), write(' e perimetro igual a '), write(P)), (perimetro(P):- P is N*L)]).
+
+propriedades10(quadrado(L), [(descricao:- write('Quadrado com lados '), write(L))]).
+
+propriedades10(pentagono(L), []).
+
+e_um10(polregular(L,N), poligono(Lista)):- crialista10(L,N,Lista).
+e_um10(rectangulo(L1,L2),poligono(Lista)):- Lista = [L1,L1,L2,L2].
+e_um10(pentagono(L) ,polregular(L,5) ) .
+e_um10(quadrado(L) ,rectangulo(L,L) ) .
+e_um10(quadrado(L) ,polregular(L,4) ) .

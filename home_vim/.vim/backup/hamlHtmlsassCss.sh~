@@ -13,8 +13,9 @@ hamlToHtml() {
 	local name=$(echo $f | sed 's/haml/html/')
 	haml $f > $name
 }
-sassToHtml() {
+sassToCss() {
 	local name=$(echo $f | sed 's/sass/css/')
+	sass $f > $name
 }
 
 # if there is no argument convert all files in folder
@@ -24,9 +25,9 @@ if [ $# -eq "0" ]; then
 			hamlToHtml $f
 		fi
 	done
-	for f in *sass; do
+	for f in *scss; do
 		if [ -f "$f" ]; then
-			sassToHtml $f
+			sassToCss $f
 		fi
 	done
 # else convert all arguments
@@ -35,7 +36,7 @@ else
 		if [[ "$f" == *haml ]]; then
 			hamlToHtml $f
 		else
-			sassToHtml $f
+			sassToCss $f
 		fi
 	done
 fi

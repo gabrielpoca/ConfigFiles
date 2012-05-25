@@ -1,0 +1,32 @@
+--- 
+published: true
+tags: 
+- media
+- osx
+- unix
+title: Media Player
+layout: post
+---
+Now that you freed your media keys what about a nice media player? My favorite player is <a href="http://www.foobar2000.org/" target="_blank">foobar</a> it does everything I really need (mostly create play lists, search by directory and tag edit) and it looks and feels just awesome! Unfortunately it is only for windows, so I've been looking around for a while and got some solutions.
+<!-- more start -->
+###Clementine
+<img title="Clementine em MacOSX" src="/images/clementine-0-5-4.png?w=300" alt="" width="300" height="187" />
+It's **free**, **cross-platform** and inspired in **Amarok**, awesome by now. It has smart and dynamic play lists, covers manage and music details. It also has Spotify, Grooveshark, Last.fm, SomaFM, Magnatune, Jamendo, SKY.fm, Digitally Imported and Icecast integration. On the other hand it's not very pretty on OSX and it doesn't have many view modes. Anyway its probably my favorite, I use it on Linux and it is worth taking a look.
+[Clementine Home Page](http://www.clementine-player.org/)
+
+###Enqueue
+<img title="Enqueue" src="/images/enqueue.jpg?w=300" alt="" width="300" height="178" />
+Enqueue is simple, fast, light and pretty! It has a music queue, play lists, statistics, LastFM integration, search filters by gender, artist and album and since the last release it has mini player view mode. I was using a old free beta version, now it's not free, but it is cheap and worth it. Enqueue is for OSX only. I like this one a lot, but I miss some functionalities.
+[Enqueue Home Page](http://www.enqueueapp.com/)
+
+###cmus
+<img class="alignleft size-medium wp-image-152" title="cmus on OSX" src="/images/cmus-2-4-3-osx.png" alt="" width="300" height="193" />
+
+This is definitely any freak's favorite. There is also <a href="http://unkart.ovh.org/ncmpcpp/">ncmpcpp</a> but I never used it although many love it. cmus is a small, fast and powerful console music player for Unix-like operating systems, and you can get it through [MacPorts](http://osxforlinuxfreaks.wordpress.com/2012/01/09/the-macports/). It has music queue, play lists, search by artist/album and search filters. Just perfect. I'm making a full review on this later.
+
+To install run:
+<pre class="brush: bash">
+$sudo port install cmus
+</pre>
+[cmus Home Page](http://cmus.sourceforge.net/)
+<!-- more end -->

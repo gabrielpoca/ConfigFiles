@@ -1,0 +1,42 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+#wrap {
+	margin: 0 auto;
+	width: 70%;
+}
+
+#taskbar {
+	padding: 5px;
+	width: 100%;
+	border-bottom: 2px #CFCFCF dashed;
+}
+
+#title {
+	padding: 25px 0 0 0;
+	width: 100%;
+}
+
+#title textarea {
+	font-size: x-large;
+	padding: 5px;
+	border-color: #CFCFCF;
+	border-style: dashed;
+	resize: none;
+	width: 100%;
+}
+
+#text {
+	padding: 25px 0 0 0;
+	width: 100%;
+}
+
+#text textarea {
+	padding: 5px;
+	border-color: #CFCFCF;
+	border-style: dashed;
+	resize: none;
+	width: 100%;
+}

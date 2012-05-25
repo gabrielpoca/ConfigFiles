@@ -1,0 +1,22 @@
+%h1
+  = @event.name
+
+%p
+  - @event.each do |user|
+    = user.email
+    
+%p
+  - @event.place.each do |place|
+    = place.name
+
+%p
+  - @event.dinner.each do |dinner|
+    = dinner.name
+
+%div
+  - @event.comment.each do |comment|
+    %p
+      = comment.content
+
+%p
+  = link_to 'Edit', edit_event_path, :id => @event.id

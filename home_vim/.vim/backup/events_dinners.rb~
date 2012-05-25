@@ -1,0 +1,4 @@
+class EventsDinners < ActiveRecord::Base
+  belongs_to :event
+  belongs_to :dinner
+end

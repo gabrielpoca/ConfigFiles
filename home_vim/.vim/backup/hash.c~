@@ -1,0 +1,94 @@
+#ifndef _STDIO
+#define _STDIO
+#include <stdio.h>
+#endif
+#ifndef _STRING
+#define _STRING
+#include <string.h>
+#endif
+#ifndef _STDLIB
+#define _STDLIB
+#include <stdlib.h>
+#endif
+
+#include "hash.h"
+
+
+int HashFunction(void *data, int max) {
+	long long int sum = 1;
+	int x;
+	for(x=0; ((char *)data)[x] != '\0'; x++) {
+		sum = sum*2 + ((char *)data)[x];
+	}
+	return sum % max;
+}
+
+HASH_HOLDER *hash_init(int size) {
+	int i;
+	HASH_HOLDER *new = (HASH_HOLDER *) malloc(sizeof(HASH_HOLDER));
+	new->size = size;
+	new->arr_hash = (HASH *) calloc(size, sizeof(HASH));
+	for(i = 0; i < size; i++) {
+		new->arr_hash[i].elements = NULL;
+	}
+	return new;
+}
+
+void hash_insert(HASH_HOLDER *table, void *c, char *key) {
+	int index = HashFunction(key, table->size);
+	HASHELEMENT *new_elem = (HASHELEMENT *) malloc (sizeof(HASHELEMENT));
+	new_elem->info = c;
+	new_elem->key = (char *) calloc (150, sizeof(char));
+	strcpy(new_elem->key, key);
+	table->arr_hash[index].elements = ll_insert(table->arr_hash[index].elements, new_elem);
+}
+
+void hash_remove(HASH_HOLDER *table, char *key) {
+	int index = HashFunction(key, table->size);
+	LLIGADA *curr;
+	LLIGADA *prev = NULL;
+	HASHELEMENT *aux;
+	for(curr = table->arr_hash[index].elements; curr != NULL; prev = curr, curr = curr->next) {
+		aux = (HASHELEMENT *) curr->info;
+		if(!strcmp(aux->key, key)) {
+			if(prev == NULL) {
+				table->arr_hash[index].elements = curr->next;
+			}
+			else {
+				prev->next = curr->next;
+				free(curr->info);
+				free(curr);
+			}
+		}
+	}
+}
+
+void *hash_search(HASH_HOLDER *table, char *key) {
+	int index;
+	HASHELEMENT *aux;
+	void *out = NULL;
+	index = HashFunction(key, table->size);
+	aux = table->arr_hash[index];
+	while(aux != NULL) {
+		if(!strcmp(aux->key, key)) {
+			out = aux->info;
+		}
+	}
+	return out;
+}
+
+void hash_dump(HASH_HOLDER *table) {
+	int i;
+	LLIGADA *aux = NULL;
+	HASHELEMENT *h = NULL;
+	printf("DUMP:::::::::::::::::\n");
+	for(i = 0; i < table->size; i++) {
+		aux = table->arr_hash[i].elements;
+		while(aux != NULL) {
+			h = (HASHELEMENT *) aux->info;
+			printf("%s\n", h->key);
+			aux = aux->next;
+		}
+	}
+}
+

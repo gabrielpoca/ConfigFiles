@@ -1,0 +1,12 @@
+---
+layout: post
+title: "new post"
+description: ""
+category: 
+tags: []
+---
+{% include JB/setup %}
+My Second Post.
+<!-- more start -->
+And some more words.
+<!-- more end -->

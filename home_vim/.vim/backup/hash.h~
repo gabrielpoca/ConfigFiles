@@ -1,0 +1,24 @@
+#include "ll.h"
+
+typedef struct hashelement {
+	void *info;
+	char *key;
+} HASHELEMENT;
+
+typedef struct hash {
+	LLIGADA *elements;
+} HASH;
+
+typedef struct hash_holder {
+	struct hash *arr_hash;
+	int size;
+} HASH_HOLDER;
+
+
+
+
+
+void hash_insert(HASH_HOLDER *table, void *c, char *key); 
+void hash_remove(HASH_HOLDER *table, char *key);
+void hash_dump(HASH_HOLDER *table);
+HASH_HOLDER *hash_init(int size);

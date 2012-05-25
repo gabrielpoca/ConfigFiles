@@ -1,0 +1,9 @@
+---
+published false
+layout: post
+title: "About Jekyll and GithubPages"
+description: ""
+category: 
+tags: []
+---
+{% include JB/setup %}

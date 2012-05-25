@@ -1,0 +1,132 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "ll.h"
+#include "camiao.h"
+#include "clientes.h"
+#include "erro.h"
+#include "menu.h"
+
+char *my_strdup(char *s);
+char linha[100];
+
+int main() {
+	clientes_init();
+    int erro_flag = E_NOERR;
+    char d[4]; 
+    int controlo = 1;
+    long int x;
+    char *y = NULL, m[30];
+    while (controlo) {
+        menu_geral();
+        scanf("%s", d);
+        {
+            if ((strcmp(d,"0") == 0)) controlo = 0;
+            if ((strcmp(d,"1") == 0)) {
+                while ((strcmp(d,"0") != 0)) {
+                    menu_cliente();
+                    scanf("%s", d);
+
+                    if ((strcmp(d,"1") == 0)) {
+                        CLIENTE *c = clientes_new();
+                        printf("Nome do cliente: \n");
+                        scanf("%s", c->nome);
+                        printf("Morada: \n");
+                        scanf("%s", c->morada);
+                        printf("Número de contribuinte: \n");
+                        scanf("%ld", &c->contribuinte);
+                        clientes_insert(c);
+                    }
+                    if ((strcmp(d,"2") == 0)) {
+                        printf("Indique o numero de contribuinte do cliente que pretende remover: \n");
+                        scanf("%ld", &x);
+                        clientes_remove(x);
+                    }
+                    if ((strcmp(d,"3") == 0)) {
+                        clientes_dump_list();
+                    }
+                    else {
+                        erro_flag = E_NOMENU;
+                        mensagem_de_erro(erro_flag);
+                    }
+                }
+            }
+
+            if ((strcmp(d,"2") == 0)) {
+                while (strcmp(d,"0") != 0) {
+                    menu_camiao();
+                    scanf("%s", d);
+
+                    if ((strcmp(d,"1") == 0)) {
+                        Camiao *c = camiao_new();
+                        printf("Nome do camiao: \n");
+                        scanf("%s", c->nome);
+                        printf("Matricula do camiao: \n");
+                        scanf("%s", c->matricula);
+                        printf("Custo por Km associado ao camiao: \n");
+                        scanf("%f", &c->custo);
+                        camiao_insert(c);
+                    }
+                    if ((strcmp(d,"2") == 0)) {
+                        printf("Indique a matricula do camiao que pretende remover: \n");
+                        scanf("%s", m);
+                        camiao_remove(m);
+                    }
+                    
+                    if ((strcmp(d,"3") == 0)) {
+                        camiao_dump_list();
+                    }
+                    
+                    else {
+                        erro_flag = E_NOMENU;
+                        mensagem_de_erro(erro_flag);
+                    }
+                }
+            }
+            if ((strcmp(d,"3") == 0)) {
+                while ((strcmp(d,"0") != 0)) {
+					menu_localidade();
+                    scanf("%s", d);
+                    if ((strcmp(d,"1") == 0)) {
+                        Localidade *l = localidade_new();
+                        printf("Nome da localidade: \n");
+                        scanf("%s", l->nome);
+                        localidades_insert(l);
+                    }
+                    if (strcmp(d,"2") == 0) {
+                        printf("Indique o nome da localidade que pretende remover: \n");
+                        scanf("%s", y);
+                    }
+                    /*if (d == 3) {
+                        Percurso *p = (Percurso *) malloc(sizeof (Percurso));
+                        printf("Insira o nome da localidade de origem: \n");
+                        scanf("%s", p->->nome);
+                        printf("Insira o nome da localidade de destino: \n");
+                        scanf("%s", p->loc_destino->nome);
+                        printf("Distância entre as duas localidades: \n");
+                        scanf("%f", &p->distancia);
+                        printf("Custo associado a viagem (ex.:portangens)");
+                        scanf("%f", &p->custo_viagem);
+                        ligacoes_insert(p);
+                    }*/
+                    /*if (d==4)
+                    { remover ligaçao entre duas loc
+                    }
+                    if (d==5)
+                    { alterar propriedades da ligaçao	  
+                    }*/
+                    else {
+                        erro_flag = E_NOMENU;
+                        mensagem_de_erro(erro_flag);
+                    }
+                }
+            }
+            else {
+                erro_flag = E_NOMENU;
+                mensagem_de_erro(erro_flag);
+            }
+        }
+    }
+    return 0;
+}
+

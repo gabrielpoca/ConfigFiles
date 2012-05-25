@@ -1,0 +1,9 @@
+class RenameEventUser < ActiveRecord::Migration
+  def up
+    rename_table :event_user, :event_users
+  end
+
+  def down
+    rename_table :event_users, :event_user
+  end
+end

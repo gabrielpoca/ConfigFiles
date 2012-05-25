@@ -1,0 +1,18 @@
+// ==UserScript==
+// @id             GoogleBarHide
+// @name           Hide the black google bar
+// @version        1.0.1
+// @namespace      codybrumfield.com
+// @author         Cody Brumfield
+// @description    Hides the black google bar
+// @include        https://plus.google.com/*
+// @include        https://www.google.com/*
+// @include        http://www.google.com/*
+// @include        https://mail.google.com/*
+// @exclude        
+// @run-at         document-end
+// ==/UserScript==
+
+
+var css = "#gbx3, .gbts { visibility: hidden !important; }"
+GM_addStyle(css);

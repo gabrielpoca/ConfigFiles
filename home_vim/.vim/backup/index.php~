@@ -1,0 +1,85 @@
+<html>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <link rel="stylesheet" type="text/css" href="screen.css" />
+   <head>
+	  <title>CESIUM - Novo Sócio</title>
+   </head>
+   <body>
+	  <div id="wrap">
+		 <h1>Novo sócio</h1>
+		 <form action="index.php" type="POST">
+			<table>
+			   <tr class="even">
+				  <td class="label">
+					 <label for="nome">Nome:</label>
+				  </td>
+				  <td class="input">
+					 <input type="text" required="required" autofocus="autofocus" id="nome" name="fnome" />
+				  </td>
+			   </tr>
+			   <tr class="odd">
+				  <td class="label">
+					 <label for="alcunha">Alcunha:</label>
+				  </td>
+				  <td class="input">
+					 <input type="text" required="required" id="alcunha" name="falcunha" />
+				  </td>
+			   </tr>
+			   <tr class="even">
+				  <td class="label">
+					 <label for="data_nascimento">Data de Nascimento:</label>
+				  </td>
+				  <td class="input">
+					 <table border="0" cellspacing="0" >
+						<tr>
+						   <td  >
+							  <select name="day" >	
+								 <?php for($i = 1; $i <= 31; $i++) { ?>
+								 <option value='<?=$i?>'><?=$i?></option>
+								 <?php }?>
+							  </select>
+						   </td>
+						   <td >
+							  <select name="month" value=''>
+								 <option value='01'>Janeiro</option>
+								 <option value='02'>Fevereiro</option>
+								 <option value='03'>Março</option>
+								 <option value='04'>Abril</option>
+								 <option value='05'>Maio</option>
+								 <option value='06'>Junho</option>
+								 <option value='07'>Julho</option>
+								 <option value='08'>Agosto</option>
+								 <option value='09'>Setembro</option>
+								 <option value='10'>Outubro</option>
+								 <option value='11'>Novembro</option>
+								 <option value='12'>Dezembro</option>
+							  </select>
+						   </td>
+						   <td >
+							  <select name="year" value=''>
+								 <?php
+									$year = (int)date("Y")+1;
+									for($i = $year - 100; $i < $year; $i++) {
+									?>
+									<option value='<?=$i?>'><?=$i?></option>
+									<?php
+									}
+								 ?>
+							  </select>
+						   </td>
+						</tr>
+					 </table>
+				  </td>
+			   </tr>
+			   <tr>
+				  <td>
+				  </td>
+				  <td>
+					 <input type="submit">
+				  </td>
+			   </tr>
+			</table>
+		 </form>
+	  </div>
+   </body>
+</html>

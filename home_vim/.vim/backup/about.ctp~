@@ -1,0 +1,7 @@
+<div id="page-about">
+<h3>About</h3>
+<p style="text-align:justify" class="small">
+De notar que esta aplicação funciona sobre a Graph Api do Facebook. Como tal detém determinadas limitações e mesmo bugs. Deste modo criei uma extensão para o chrome que coloca em cada fotografia o botão 2HotShare. Este botão permite submeter a fotografia em questão. Sendo que determinadas fotografias se encontram inacessiveis através da API esta extensão resolve o problema. É também de notar que por vezes o botão pode não aparecer mas um simples recarregar da página resolve o problema. Download <?=$this->Html->link('aqui', '/files/2hotgirls.crx')?>.
+</p>
+<p style="text-align:justify" class="small">Esta aplicação é totalmente da minha autoria e tem como único objectivo a partilha de fotografias. Cada pessoa pode anonimamente submeter fotogrifas, colocar <emph>hots</emph> e comentar. Devo agradecer a algumas pessoas que me aturaram sobre questões de interface e funcionalidades. O meu nome é Gabriel Poça e sou aluno de LEI no Minho. Qualquer questão ou mesmo sujestão pode ser colocada <?=$this->Html->link('aqui', array('controller' => 'contacts', 'action' => 'add'))?>.</p>
+</div>

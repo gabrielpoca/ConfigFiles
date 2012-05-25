@@ -1,0 +1,15 @@
+--- 
+- !masanjin.net,2006-10-01/Redwood/IMAP 
+  uri: imap://imap.gmail.com:993/INBOX
+  username: cette118@gmail.com
+  password: reactivo.
+  cur_offset: 
+  usual: true
+  archived: false
+  id: 1
+  labels: []
+
+- !masanjin.net,2006-10-01/Redwood/SentLoader 
+  cur_offset: 0
+- !masanjin.net,2006-10-01/Redwood/DraftLoader 
+  cur_offset: 0

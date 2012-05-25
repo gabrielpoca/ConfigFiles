@@ -1,0 +1,12 @@
+%html
+  %head
+    %link{  :rel => "stylesheet", :type => "text/css", :href => "style.css"}
+  %body
+    #header
+      Header
+    #main
+      #sidebar
+        Sidebar
+      #content
+        %h1 Content
+

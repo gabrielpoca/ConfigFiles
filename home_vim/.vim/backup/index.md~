@@ -1,0 +1,14 @@
+---
+layout: page
+title: Index
+tagline:
+---
+{% include JB/setup %}
+{% for post in site.posts %}
+###[{{ post.title }}]({{ BASE_PATH }}{{ post.url }})
+{{ post.content | replace:'more start -->','' | replace:'<\!-- more end','' | replace:'</p>','' }}
+<a href="{{ BASE_PATH }}{{ post.url }}">Read more»</a></p>
+{% unless forloop.last %}
+<div class="postpreviewseparator"> </div>
+{% endunless %}
+{% endfor %}

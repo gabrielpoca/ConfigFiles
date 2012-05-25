@@ -1,0 +1,9 @@
+#ifndef _LL
+#define _LL
+typedef struct lligada {
+	void *info;
+	struct lligada *next;
+} LLIGADA;
+
+LLIGADA *ll_insert(LLIGADA *list, void *new_info);
+#endif

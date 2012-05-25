@@ -1,0 +1,106 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Mar 17, 2012 at 11:41 AM
+-- Server version: 5.0.95
+-- PHP Version: 5.2.9
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `hortogir_twohotgirls`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photos`
+--
+
+CREATE TABLE IF NOT EXISTS `photos` (
+  `id` varchar(150) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `user` varchar(150) NOT NULL,
+  `source` varchar(2083) NOT NULL,
+  `link` varchar(2083) NOT NULL,
+  `available` tinyint(1) default NULL,
+  `created` datetime NOT NULL,
+  `hr` int(11) NOT NULL,
+  `fbuser_comment` text,
+  `deleted` int(6) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `name`, `user`, `source`, `link`, `available`, `hr`, `fbuser_comment`, `deleted`) VALUES
+('10150288116221473', 'SÃ­lvia Cardoso', '625866472', 'http://a1.sphotos.ak.fbcdn.net/hphotos-ak-snc6/223645_10150288116221473_625866472_7454599_151432_n.jpg', 'http://www.facebook.com/photo.php?fbid=10150288116221473&set=a.447997126472.215729.625866472&type=3&theater', NULL, 1499, NULL, 0),
+('10150323415929351', 'Rita AraÃºjo', '604474350', 'http://a7.sphotos.ak.fbcdn.net/hphotos-ak-ash4/294104_10150323415929351_604474350_7798194_15795172_n.jpg', 'http://www.facebook.com/photo.php?fbid=10150323415929351&set=a.10150323378759351.362027.604474350&type=3&theater', NULL, 1533, NULL, 0),
+('10150336451428979', 'Raquel Vasconcelos Reis', '821533978', 'http://a3.sphotos.ak.fbcdn.net/hphotos-ak-ash4/s720x720/304265_10150336451428979_821533978_8052606_2146093519_n.jpg', 'http://www.facebook.com/photo.php?fbid=10150336451428979&set=a.447753498978.242705.821533978&type=3&theater', NULL, 1509, NULL, 0),
+('10150443492915292', 'Joana Meireles', '644245291', 'http://a2.sphotos.ak.fbcdn.net/hphotos-ak-ash4/400464_10150443492915292_644245291_9061403_9876255_n.jpg', 'http://www.facebook.com/photo.php?fbid=10150443492915292&set=a.430360845291.217259.644245291&type=3&theater', NULL, 1510, NULL, 0),
+('106586172700168', 'TÃ¢nia Neves', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc3/25896_106586172700168_100000463587872_171027_7416006_n.jpg', 'http://www.facebook.com/photo.php?fbid=106586172700168&set=a.156780864347365.39119.100000463587872&type=1', NULL, 1457, '100000410289101', 'true', 0),
+('109890442462798', 'Ferreira Ã‰lodie', '100003255286683', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/402630_109890442462798_100003255286683_43910_124612261_n.jpg', 'https://www.facebook.com/photo.php?fbid=109890442462798&set=a.109890439129465.10320.100003255286683&type=3&theater', NULL, 1507, NULL, 0),
+('119832854801890', 'Ferreira Ã‰lodie', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/404913_119832854801890_100003255286683_97667_1058741466_n.jpg', 'http://www.facebook.com/photo.php?fbid=119832854801890&set=a.109890439129465.10320.100003255286683&type=1', 0, 1521, NULL, 0),
+('1277351208024', 'CÃ© Pereira', '1057290489', 'http://a2.sphotos.ak.fbcdn.net/hphotos-ak-ash2/23675_1277351208024_1057290489_30705079_6863579_n.jpg', 'http://www.facebook.com/photo.php?fbid=1277351208024&set=a.1451410639401.2057074.1057290489&type=3&theater', NULL, 1547, NULL, 0),
+('141090855913857', 'Ana Barbosa', '100000388295844', 'http://a3.sphotos.ak.fbcdn.net/hphotos-ak-snc6/39938_141090855913857_100000388295844_271642_3379249_n.jpg', 'http://www.facebook.com/photo.php?fbid=141090855913857&set=a.137721146250828.16957.100000388295844&type=3&theater', NULL, 1499, NULL, 0),
+('147297615311794', 'Sara Magalhaes', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash2/33693_147297615311794_100000946685323_208672_4169794_n.jpg', 'http://www.facebook.com/photo.php?fbid=147297615311794&set=a.141375605903995.14319.100000946685323&type=1', 1, 1384, NULL, 0),
+('1503704042662', 'Fabiana Oliveira', '1536063075', 'http://a4.sphotos.ak.fbcdn.net/hphotos-ak-ash2/35235_1503704042662_1536063075_1256010_6598757_n.jpg', 'http://www.facebook.com/photo.php?fbid=1503704042662&set=a.1563521138052.72746.1536063075&type=3&theater', NULL, 1545, NULL, 0),
+('1529657003563', 'Karina Morbey Ferro', '1298877076', 'http://a5.sphotos.ak.fbcdn.net/hphotos-ak-ash2/37261_1529657003563_1298877076_1465892_299608_n.jpg', 'http://www.facebook.com/photo.php?fbid=1529657003563&set=a.1529626962812.68479.1298877076&type=3&theater', NULL, 1566, NULL, 0),
+('161840887173947', 'EstefÃ¢nia Caldas', '100000441117164', 'http://a1.sphotos.ak.fbcdn.net/hphotos-ak-ash2/65704_161840887173947_100000441117164_415675_7293819_n.jpg', 'http://www.facebook.com/photo.php?fbid=161840887173947&set=a.151649994859703.29878.100000441117164&type=3&theater', NULL, 1538, NULL, 0),
+('1813535435958', 'Ana LuÃ­sa', '1767234472', 'http://a5.sphotos.ak.fbcdn.net/hphotos-ak-ash4/s720x720/418592_1813535435958_1767234472_956640_1432814065_n.jpg', 'http://www.facebook.com/photo.php?fbid=1813535435958&set=a.1174633143800.21590.1767234472&type=1&theater', NULL, 1524, NULL, 0),
+('1843959659040', 'Leny Fernandes', '1242080719', 'http://a2.sphotos.ak.fbcdn.net/hphotos-ak-ash2/168954_1843959659040_1242080719_2218197_4011773_n.jpg', 'http://www.facebook.com/photo.php?fbid=1843959659040&set=a.1617133828536.110864.1242080719&type=3&theater', NULL, 1524, NULL, 0),
+('1843995392247', 'Pedro Benavente', '1611492454', 'http://a7.sphotos.ak.fbcdn.net/hphotos-ak-ash4/308550_1843995392247_1611492454_1429252_5178009_n.jpg', 'http://www.facebook.com/photo.php?fbid=1843995392247&set=t.100000735377565&type=3&theater', NULL, 1527, NULL, 0),
+('184906468233156', 'Liliana Costa', '100001414111025', 'http://a6.sphotos.ak.fbcdn.net/hphotos-ak-snc6/261782_184906468233156_100001414111025_523152_5486608_n.jpg', 'http://www.facebook.com/photo.php?fbid=184906468233156&set=a.108814609175676.8285.100001414111025&type=3&theater', NULL, 1502, NULL, 0),
+('191111424266996', 'PatrÃ­cia Mota', '100001044195972', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/208646_191111424266996_100001044195972_501170_4311686_n.jpg', 'http://www.facebook.com/photo.php?fbid=191111424266996&set=a.136539589724180.20499.100001044195972&type=1', 1, 1436, NULL, 0),
+('192260707468647', 'Sara Vieira', '100000541573186', 'http://a2.sphotos.ak.fbcdn.net/hphotos-ak-snc6/167346_192260707468647_100000541573186_647684_4453942_n.jpg', 'http://www.facebook.com/photo.php?fbid=192260707468647&set=a.192260520801999.54844.100000541573186&type=3&theater', NULL, 1499, NULL, 0),
+('194797713883964', 'Adriana Tinoco', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/189477_194797713883964_100000612102105_554353_5101988_n.jpg', 'http://www.facebook.com/photo.php?fbid=194797713883964&set=a.148416371855432.24093.100000612102105&type=1', NULL, 1340, NULL, 0),
+('2066047563346', 'PatrÃ­cia Rebelo', '1009471666', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc6/281461_2066047563346_1009471666_32231548_5941552_n.jpg', 'https://www.facebook.com/photo.php?fbid=2066047563346&set=a.1484421503058.2063068.1009471666&type=1&theater', NULL, 1444, NULL, 0),
+('2082621438709', 'Maria JoÃ£o Fernandes', '1640302753', 'http://a6.sphotos.ak.fbcdn.net/hphotos-ak-snc6/284182_2082621438709_1640302753_2103718_7425129_n.jpg', 'http://www.facebook.com/photo.php?fbid=2082621438709&set=a.1242781643239.36560.1640302753&type=3&theater', NULL, 1540, NULL, 0),
+('210589822302719', 'Vera Lima', '100000551085875', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc6/215919_210589822302719_100000551085875_766724_2329734_n.jpg', 'https://www.facebook.com/photo.php?fbid=210589822302719&set=a.154766701218365.32612.100000551085875&type=3&permPage=1', NULL, 1590, NULL, 0),
+('2160041237464', 'Francisca\\'' Vilas Boas', '1139537091', 'http://a5.sphotos.ak.fbcdn.net/hphotos-ak-ash4/s720x720/388087_2160041237464_1139537091_31863627_2037377883_n.jpg', 'http://www.facebook.com/photo.php?fbid=2160041237464&set=a.1403813252237.2063783.1139537091&type=3&theater', NULL, 1535, NULL, 0),
+('2180553012376', 'Filipa Rocha', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/374690_2180553012376_1803458319_1439945_1970719881_n.jpg', 'http://www.facebook.com/photo.php?fbid=2180553012376&set=a.1271531967418.32037.1803458319&type=1', NULL, 1305, NULL, 0),
+('2241414165478', 'Claudia Peixito', '1551803430', 'http://a6.sphotos.ak.fbcdn.net/hphotos-ak-ash4/317183_2241414165478_1551803430_2344816_7671554_n.jpg', 'http://www.facebook.com/photo.php?fbid=2241414165478&set=a.1586686957707.2081891.1551803430&type=3&theater', NULL, 1528, NULL, 0),
+('2274267149185', 'Daniela Dias', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/314938_2274267149185_1623877032_2165052_1492183446_n.jpg', 'http://www.facebook.com/photo.php?fbid=2274267149185&set=a.1465591292794.63602.1623877032&type=1', NULL, 1596, NULL, 0),
+('230698503625184', 'Vera Lima', '100000551085875', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/262220_230698503625184_100000551085875_908263_5435750_n.jpg', 'https://www.facebook.com/photo.php?fbid=230698503625184&set=a.154766701218365.32612.100000551085875&type=3&theater', NULL, 1634, NULL, 0),
+('2326975212104', 'Helena Coelho', '1181381258', 'http://a5.sphotos.ak.fbcdn.net/hphotos-ak-ash4/s720x720/298136_2326975212104_1181381258_32342926_1134508397_n.jpg', 'http://www.facebook.com/photo.php?fbid=2326975212104&set=a.1483924696368.2065386.1181381258&type=3&theater', NULL, 1504, NULL, 0),
+('235544059820482', 'Sara Magalhaes', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/300407_235544059820482_100000946685323_624416_8195422_n.jpg', 'http://www.facebook.com/photo.php?fbid=235544059820482&set=a.141375605903995.14319.100000946685323&type=1', 1, 1464, NULL, 0),
+('247657801924833', 'Catarina Pinto', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc6/252067_247657801924833_100000418456186_929991_972227_n.jpg', 'http://www.facebook.com/photo.php?fbid=247657801924833&set=a.154204954603452.28389.100000418456186&type=1', 1, 1323, NULL, 0),
+('253765541302400', 'Dihh Costa', '100000068688504', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/206078_253765541302400_100000068688504_1085166_1103218_n.jpg', 'http://www.facebook.com/photo.php?fbid=253765541302400&set=a.158649494147339.34035.100000068688504&type=1', 1, 1480, NULL, 0),
+('254766311209763', 'Vanessa Vaz', '100000291880919', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc6/281721_254766311209763_100000291880919_1028276_8210438_n.jpg', 'http://www.facebook.com/photo.php?fbid=254766311209763&set=a.151621248190937.26534.100000291880919&type=1', 1, 1523, NULL, 0),
+('255079677900362', 'Daniela Rodrigues', '100001949943964', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/425944_255079677900362_100001949943964_538385_7499805_n.jpg', 'https://www.facebook.com/photo.php?fbid=255079677900362&set=a.100509010024097.1410.100001949943964&type=3&theater', NULL, 1411, NULL, 0),
+('2555866756055', 'CÃ¡tia Morais', '1835574881', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/431035_2555866756055_1835574881_1521402_324791204_n.jpg', 'https://www.facebook.com/photo.php?fbid=2555866756055&set=a.1291323143255.37736.1835574881&type=3&theater', NULL, 1500, NULL, 0),
+('259880177375392', 'Catarina Marques', '100000602355748', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/307491_259880177375392_100000602355748_975986_6189591_n.jpg', 'https://www.facebook.com/photo.php?fbid=259880177375392&set=a.151147228248688.32484.100000602355748&type=3&theater', NULL, 1414, NULL, 0),
+('2694120234780', 'Joana Rodrigues', '1309776697', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc7/s720x720/417682_2694120234780_1309776697_32095652_133206178_n.jpg', 'https://www.facebook.com/photo.php?fbid=2694120234780&set=a.1388273509428.2051803.1309776697&type=3&theater', NULL, 1414, NULL, 0),
+('269831883047400', 'Daniela Dias', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/296320_269831883047400_100000617705852_899404_444535641_n.jpg', 'http://www.facebook.com/photo.php?fbid=269831883047400&set=a.147880761909180.23040.100000617705852&type=1', NULL, 1559, NULL, 0),
+('270101646364723', 'Sara Magalhaes', '100000946685323', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/385929_270101646364723_100000946685323_730269_1968349042_n.jpg', 'http://www.facebook.com/photo.php?fbid=270101646364723&set=a.141375605903995.14319.100000946685323&type=1', 1, 1358, NULL, 0),
+('278692455485640', 'Catarina Ferreira', '100000346621370', 'http://a2.sphotos.ak.fbcdn.net/hphotos-ak-ash4/s720x720/308963_278692455485640_100000346621370_968875_1518753279_n.jpg', 'http://www.facebook.com/photo.php?fbid=278692455485640&set=a.150442551643965.20596.100000346621370&type=3&theater', NULL, 1559, NULL, 0),
+('2808114569274', 'InÃªs da Mata', '1450981983', 'http://a8.sphotos.ak.fbcdn.net/hphotos-ak-snc7/s720x720/407958_2808114569274_1450981983_2758814_1574099103_n.jpg', 'http://www.facebook.com/photo.php?fbid=2808114569274&set=a.1520055808610.68199.1450981983&type=3&theater', NULL, 1520, NULL, 0),
+('301426423210418', 'Vanessa Vaz', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/377884_301426423210418_100000291880919_1222975_1298894842_n.jpg', 'http://www.facebook.com/photo.php?fbid=301426423210418&set=a.151621248190937.26534.100000291880919&type=1', NULL, 1565, NULL, 0),
+('311210252257112', 'PatrÃ­cia Mota', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/399544_311210252257112_100001044195972_961181_2096882718_n.jpg', 'http://www.facebook.com/photo.php?fbid=311210252257112&set=a.136539589724180.20499.100001044195972&type=1', NULL, 1388, NULL, 0),
+('326405740708738', 'FlÃ¡via Kapa', '100000179457738', 'http://a3.sphotos.ak.fbcdn.net/hphotos-ak-snc7/s720x720/316445_326405740708738_100000179457738_1543289_82027728_n.jpg', 'http://www.facebook.com/photo.php?fbid=326405740708738&set=a.161442510538396.42470.100000179457738&type=3&permPage=1', NULL, 1576, NULL, 0),
+('333572180019691', 'Ana Ribeiro', '100001007358825', 'http://a7.sphotos.ak.fbcdn.net/hphotos-ak-ash4/s720x720/427261_333572180019691_100001007358825_967010_255153663_n.jpg', 'http://www.facebook.com/photo.php?fbid=333572180019691&set=a.139944426049135.22449.100001007358825&type=3&theater', NULL, 1472, NULL, 0),
+('334822389881242', 'Maria Carvalho', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/403923_334822389881242_100000604526142_1254939_1602324477_n.jpg', 'http://www.facebook.com/photo.php?fbid=334822389881242&set=a.334815486548599.96582.100000604526142&type=1', NULL, 1384, NULL, 0),
+('340283625985283', 'Daniela MacÃ¡rio', '100000109468265', 'http://a2.sphotos.ak.fbcdn.net/hphotos-ak-snc6/s720x720/166982_340283625985283_100000109468265_1499444_1680278897_n.jpg', 'http://www.facebook.com/photo.php?fbid=340283625985283&set=a.162386847108296.42292.100000109468265&type=3&theater', NULL, 1504, NULL, 0),
+('344119712274855', 'Soraia Monteiro', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/424233_344119712274855_571858961_n.jpg', 'http://www.facebook.com/photo.php?fbid=344119712274855&set=a.150205771666251.25502.100000304875382&type=1', NULL, 1561, NULL, 0),
+('356294407731046', 'PatrÃ­cia Barroso', '100000514699075', 'http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc7/s720x720/403229_356294407731046_100000514699075_1521914_1808469759_n.jpg', 'http://www.facebook.com/photo.php?fbid=356294407731046&set=a.166990353328120.41548.100000514699075&type=3&theater', NULL, 1508, NULL, 0),
+('366834370007493', 'Lisa Correia', '100000427985359', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash4/s720x720/423388_366834370007493_100000427985359_1293163_788179223_n.jpg', 'https://www.facebook.com/photo.php?fbid=366834370007493&set=p.366834370007493&type=1&theater', NULL, 1401, NULL, 0),
+('378156618864308', 'Ana Isabel Palha Rodrigues', '100000099187068', 'http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc7/s720x720/430736_378156618864308_100000099187068_1510694_1237796904_n.jpg', 'http://www.facebook.com/photo.php?fbid=378156618864308&set=a.157289770950995.32514.100000099187068&type=3&theater', NULL, 1512, NULL, 0),
+('383905011639070', 'Ana Silva', '100000587225748', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc7/s720x720/419933_383905011639070_100000587225748_1369595_471411572_n.jpg', 'https://www.facebook.com/photo.php?fbid=383905011639070&set=a.150938254935748.27778.100000587225748&type=3&theater', NULL, 1460, NULL, 0),
+('471790003397', 'Ana Pinheiro', '535648397', 'http://a7.sphotos.ak.fbcdn.net/hphotos-ak-snc6/155558_471790003397_535648397_5477053_6156479_n.jpg', 'http://www.facebook.com/photo.php?fbid=471790003397&set=a.464535028397.253979.535648397&type=3&theater', NULL, 1540, NULL, 0),
+('477825580458', 'Vanessa Araujo', '713380458', 'http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc6/19339_477825580458_713380458_11121103_2173954_n.jpg', 'http://www.facebook.com/photo.php?fbid=477825580458&set=a.243853545458.304772.713380458&type=3&theater', NULL, 1543, NULL, 0),
+('481862821294', 'Mariana Sousa Santos', '', 'https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc4/164548_481862821294_614936294_6094278_6533690_n.jpg', 'http://www.facebook.com/photo.php?fbid=481862821294&set=a.56294041294.69349.614936294&type=1', NULL, 1528, NULL, 0);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

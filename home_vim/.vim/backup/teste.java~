@@ -1,0 +1,126 @@
+import java.util.*;
+import java.io.*;
+import java.net.*;
+
+class Prime {
+
+	public static void addPrime(int p) {
+		System.out.println("ADD "+p);
+	}
+
+	public static boolean queryPrime(int p) {
+		System.out.println("QUERY "+p);
+		return false;
+	}
+}
+
+class WaitManager {
+
+	public int _count;
+	public final int MAX = 10;
+
+	public WaitManager() {
+		_count = 0;
+	}
+
+	public boolean inc() {
+		if(_count == 10) {
+			return false;
+		} else {
+			_count++;
+			return true;
+		}
+	}
+
+	public void dec() {
+		_count--;
+	}
+}
+
+class Add extends Thread {
+
+	Socket _cs;
+
+	public Add(Socket cs) {
+		_cs = cs;
+	}
+
+	public void run() {
+		try {
+			BufferedReader in = new BufferedReader(new InputStreamReader(_cs.getInputStream()));
+			int p = Integer.parseInt(in.readLine());
+			synchronized (Prime.class) {
+				Prime.addPrime(p);
+				Prime.class.notifyAll();
+			}
+			in.close();
+			_cs.close();
+		} catch (IOException e) {
+		}
+	}	
+}
+
+class Query extends Thread {
+
+	Socket _cs;
+	WaitManager _wm;
+
+	public Query(Socket cs, WaitManager wm) {
+		_cs = cs;
+		_wm = wm;
+	}
+
+	public void run() {
+		try {
+			if(_wm.inc()) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(_cs.getInputStream()));
+				int p = Integer.parseInt(in.readLine());
+				synchronized (Prime.class) {
+					while(!Prime.queryPrime(p))
+						Prime.class.wait();
+				}
+				in.close();
+				_wm.dec();
+			}
+			_cs.close();
+		} catch (IOException e) {
+		} catch (InterruptedException e) {
+		}
+	}
+}
+
+class SERVER {
+
+	public static final int ADD = 0;
+	public static final int QUERY = 1;
+
+	public static void main(String[] argv) {
+		try {
+			ServerSocket ss = new ServerSocket(9999);
+			WaitManager wm = new WaitManager();
+			Socket cs = null;
+			Thread t = null;
+			boolean run = true;
+
+			while(run) {
+				cs = ss.accept();
+				BufferedReader in = new BufferedReader(new InputStreamReader(cs.getInputStream()));
+				int p = Integer.parseInt(in.readLine());
+				switch(p) {
+					case ADD:
+						t = new Thread(new Add(cs));
+						t.start();
+						break;
+					case QUERY:
+						t = new Thread(new Query(cs, wm));
+						t.start();
+						break;
+				}
+			}
+		} catch(IOException e) {
+		}
+	}
+
+}
+
+

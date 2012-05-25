@@ -1,0 +1,7 @@
+#!/bin/bash
+EXE=/Users/gabrielpoca/Applications/Transmission.app/Contents/MacOS/Transmission
+FOLDER=/Users/gabrielpoca/Series/
+IFS=$(echo -en "\n\b")
+for file in $(find $FOLDER -type f -iname *.torrent | sed 's/ /\ /'); do
+	$EXE $file
+done

@@ -1,0 +1,51 @@
+:- set_prolog_flag( discontiguous_warnings,off ).
+:- set_prolog_flag( single_var_warnings,off ).
+:- set_prolog_flag( unknown,fail ).
+
+:- dynamic '-'/1.
+:- dynamic 'gato'/1.
+
+nao(Q):- Q, !, fail.
+nao(Q).
+
+demo(Questao, verdadeiro):- Questao.
+demo(Questao, falso):- -Questao.
+demo(Questao, desconhecido):- nao(Questao), nao(-Questao).
+%i
+voa(X):- ave(X), nao( excepcao( voa(X) ) ).
+%ii
+-voa(X):- mamifero(X), nao( excepcao( -voa(X) )).
+%iii
+-voa(tweety).
+%iv
+ave(pitigui).
+%v
+ave(X):- canario(X).
+%vi
+ave(X):- periquito(X).
+%vii
+canario(piupiu).
+%viii
+mamifero(silvestre).
+%ix
+mamifero(X):- cao(X).
+%x
+mamifero(X):- gato(X).
+%xi
+cao(boby).
+%xii
+ave(X):- avestruz(X).
+excepcao( voa(X) ):- avestruz(X).
+-voa(X):- excepcao( voa(X) ).
+%xiii
+ave(X):- pinguim(X).
+%xiv
+avestruz(trux).
+%xv
+pinguim(pingu).
+%vi
+mamifero(X):- morcego(X).
+voa(X):- excepcao(-voa(X)).
+excepcao( -voa(X) ):- morcego(X).
+%vii
+morcego(batemene).

@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+	  <?= $this->Html->charset(); ?>
+	  <title>
+		 <?= $title_for_layout; ?>
+	  </title>
+
+	  <?php
+		 echo $this->Html->meta('icon');
+
+		 echo $this->Html->css('main');
+		 echo $this->Html->css('header');
+		 echo $this->Html->css('gallery');
+		 echo $this->Html->css('timeline');
+		 echo $this->Html->css('photo');
+		 echo $this->Html->css('grid');
+
+		 echo $this->Html->script('jquery-1.6.1.min.js');
+
+		 echo $scripts_for_layout;
+	  ?>
+
+	  <script type="text/javascript">
+		 function getUrlVars(url) {
+			   var vars = [], hash;
+			   var hashes = url.slice(url.indexOf('?') + 1).split('&');
+			   for(var i = 0; i < hashes.length; i++)
+			   {
+					 hash = hashes[i].split('=');
+					 vars.push(hash[0]);
+					 vars[hash[0]] = hash[1];
+			   }
+			   return vars;
+		 }
+
+		 function resetSubmit() {
+			   $('#submit').hide(100);
+			   $('#photo-submit-input-comment').val("");
+			   $("#photo-submit-input").val("");
+			   $('input[name=avaliable]').removeAttr('checked');
+		 }
+
+		 // parse fbid and submit to /photos/add
+		 function submitPhoto() {
+			   var fbid = getUrlVars($("#photo-submit-input").val())['fbid'];
+			   var checked = $('input[name=avaliable]').attr('checked');
+			   var comment = $('#photo-submit-input-comment').val();
+			   if(fbid!=undefined) {
+					 if($('#photo-submit-input-comment').val() == $('#photo-submit-input-comment')[0].title) {
+						   comment = "";
+					 }
+					 $.get('<?= $this->Html->url(array('controller' => 'photos', 'action' => 'add')); ?>'+'/'+fbid+'/'+checked+'/'+comment, function(data) {
+						   var msg = "Submited!"
+						   if(data == "0") {
+								 msg = "You have to login first!";
+							  } else if (data == "-1") {
+								 msg = "Photo is not accessbile from GraphAPI, use our Google Chrome extension.";
+						   	  } else if (data == "-2") {
+								 msg = "Photo aready submited by someone!";
+							  } else if (data == "-3") {
+								 msg = "Someone already submited and deleted the photo. It has been updated to you!";
+						   }
+						   alert(msg);
+					 });
+				  } else {
+					 alert("Invalide URL!");
+			   }
+			   resetSubmit();
+		 }
+
+		 function submitReport(id) {
+			   var answer = confirm("Sure?");
+			   if(answer) {
+					 $.get("<?= $this->Html->url(array('controller' => 'reports', 'action' => 'add')); ?>"+"/"+id, function() {
+					 });
+			   }
+			   return false;
+		 }
+
+		 // show submit div
+		 function showSubmit() {
+			   $('#submit').show(300);
+			   return false;
+		 }
+
+		 // hide submit div
+		 function hideSubmit() {
+			   $('#submit').hide(300);
+			   return false;
+		 }
+
+
+		 // submit user like to photo id
+		 function submitLike(id) {
+			   $.get("<?= $this->Html->url(array('controller' => 'likes', 'action' => 'add')); ?>"+"/" + id, function() {
+					 $("#like-"+id).text('hot');
+					 var number = parseInt($("#count-"+id).text(),10)+1;
+					 $("#count-"+id).text(number);
+					 //return false;
+			   });
+			   return false;
+		 }
+
+		 function loadContent(url) {
+			   $('#content').load(url, function() {
+					 initialBind();
+					 return false;
+			   });
+		 }
+
+		 function loadContentPhotosIndex(url) {
+			   $('#content_photos_index').load(url+' #content_photos_index', function() {
+					 initialBind();
+					 return false;
+			   });
+		 }
+
+		 function initialBind() {
+			   $('.sort-item a').click(function() {
+					 loadContentPhotosIndex($(this).attr('href'));
+					 return false;
+			   });
+			   $('.delete a').click(function() {
+					 $.get($(this).attr('href'));
+					 $(this).parent().parent().hide(200);
+					 return false;
+			   });
+			   $('a.preview').click(function() {
+					 loadContent($(this).attr('href'));
+					 return false;
+			   });
+			   /*
+			   $('.grid-item-buttons').hide();
+			   $('.grid-item-photo').mouseover(function() {
+					 var element = $(this).parent().find('.grid-item-buttons'); 
+					 if(element.is(':hidden')) {
+						   element.show(300);
+					 }
+			   });
+			   $('.grid-item-photo').mouseout(function() {
+					 var element = $(this).parent().find('.grid-item-buttons'); 
+					 if(element.is(':visible')) {
+						   element.delay(2200).hide(300);
+					 }
+			   });
+			   */
+
+			   return false;
+		 }
+
+		 // document ready setup
+		 $(document).ready(function() {
+			   // sidebar navigation
+			   $('#li-main').click(function() {
+					 loadContent('<?= $this->Html->url(array('controller' => 'photos', 'action' => 'index')); ?>');
+					 return false;
+			   });
+			   $('#li-profile').click(function() {
+					 loadContent('<?= $this->Html->url(array('controller' => 'fbusers', 'action' => 'view', $user)); ?>');
+					 return false;
+			   });
+			   $('#li-about').click(function() {
+					 $('#content').load('<?= $this->Html->url(array('controller' => 'pages', 'action' => 'about'));?> #page-about');
+					 return false;
+			   });	
+			   $('#li-contact').click(function() {
+					 $('#content').load('<?= $this->Html->url(array('controller' => 'contacts', 'action' => 'add'));?> #page-contacts');
+					 return false;
+			   });
+			   // submit photo
+			   $('#photo-submit-input-comment-span').click(function() {
+					 //$('#photo-submit-input-comment').show(200);
+					 $('#photo-submit-input-comment').css('display', 'inline');
+					 $(this).hide();
+			   });
+			   $('#photo-submit-input-comment').focus(function() {
+					 if($(this).val() == $(this)[0].title)
+					 {
+						   $(this).val("");
+					 } 	
+			   });
+			   $('#photo-submit-input-comment').blur(function() {
+					 if($(this).val() == "")
+					 {
+						   $(this).val($(this)[0].title);
+					 } 	
+			   });
+			   // logout
+			   <?php if ($user) { ?>
+			   $('#login a').text('<?= $user_name ?>');
+
+			   $('#login a').mouseout(function() {
+					 $(this).text('<?= $user_name ?>');
+			   });
+			   $('#login a').mouseover(function() {
+					 $(this).text('<?= $user_name ?>'+' (Logout)');
+					 //$(this).text('<?=$this->Html->link($user_name." (Logout)", array("controller" => "fbusers", "action" => "logout"))?>');
+			   });
+			   <?php } ?>
+
+			   initialBind();
+			   // submit initial state
+			   $('#photo-submit-input-comment').hide();
+			   //$('#photo-submit-input-comment').blur();
+			   $('#submit').hide();
+		 });
+	  </script>
+   </head>
+   <body>
+	  <!-- HEADER DIV -->
+	  <div id="header-out">
+		 <div id="header">
+			<div id="header-title">
+			   <b><?= $this->Html->link('2HotGirls', array('controller' => 'photos', 'action' => 'index')); ?></b>
+			</div>
+			<!-- HEADER: LOGIN AND LOGOUT -->	
+			<div class="elem" id="header-log">
+			   <?php
+				  if ($user) {
+					 echo "<span id='login'>" . $this->Html->link($user_name . " (Logout)", array('controller' => 'fbusers', 'action' => 'logout')) . "</span>";
+				  } else {
+					 echo $this->Html->link('Login', array('controller' => 'fbusers', 'action' => 'login'));
+				  }
+			   ?>
+			</div>
+			<div class="elem" id="header-submit">
+			   <a href="#" onClick="showSubmit();">Submit Photo</a>
+			</div>
+			<div class="elem" id="header-hotmash">
+			   <?= $this->Html->link('HotMash', array('controller' => 'photos', 'action' => 'hotmash')); ?>
+			</div>
+			<div class="clear"></div>
+		 </div>
+	  </div>
+	  <div id="container">
+		 <!-- SIDEBAR DIV -->
+		 <div id="sidebar">
+			<a href="#"><div class="logo"></div></a>
+			<ul>
+			   <a href="<?= $this->Html->url(array('controller' => 'photos', 'action' => 'index')); ?>"><li id="li-main">Home</li></a>
+			   <a href="<?= $this->Html->url(array('controller' => 'fbusers', 'action' => 'view', $user)); ?>"><li id="li-profile">Profile</li></a>
+			   <a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'about')); ?>"><li id="li-about">About</li></a>
+			   <a href="<?= $this->Html->url(array('controller' => 'contacts', 'action' => 'add')); ?>"><li id="li-contact">Contact</li></a>
+			</ul>
+		 </div>	
+		 <div id="right-container">
+			<!-- SUBMIT FORM -->
+			<div id="submit">
+			   <h3>Submit a Photo <span class="small"><a href="#" onClick="hideSubmit();">hide</a></span></h3>
+			   <form action="<?= $this->Html->url(array('controller' => 'photos', 'action' => 'add')); ?>" method="GET">
+				  <div class="submit-line small">
+					 avaliable: 
+					 <input type="checkbox" name="avaliable" value="avaliable" />
+					 <span class="small" id="photo-submit-input-comment-span">comment</span>
+					 <input id="photo-submit-input-comment" title="comment..." type="url" name="photo_comment" value="comment..."/>
+				  </div>
+				  <div class="submit-line">
+					 <input class="text" id="photo-submit-input" type="url" name="photo_url" />
+					 <button id="photo-submit-button" onClick="submitPhoto();" type="button">Submit!</button>	
+				  </div>
+			   </form>
+			</div>
+			<!-- CONTENT DIV -->
+			<div id="content">
+			   <?php echo $this->Session->flash(); ?>
+			   <?php echo $content_for_layout; ?>
+			</div>
+		 </div>
+		 <div class="clear"></div>
+		 <!-- FOOTER DIV -->
+		 <div id="footer">
+			by Gabriel Poça
+		 </div>
+	  </div>
+	  <div style="clear:both;width:100%;">
+		 <?php echo $this->element('sql_dump'); ?>
+	  </div>
+   </body>
+</html>

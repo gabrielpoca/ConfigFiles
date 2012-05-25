@@ -1,0 +1,6 @@
+class CreateEventsUsersJoinTable < ActiveRecord::Migration
+  def self.up
+    change_column :table, :column, :string, :null => false, :default => ""
+    change_column_default(:table, :column, nil)
+  end
+end

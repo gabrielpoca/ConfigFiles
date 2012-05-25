@@ -1,0 +1,57 @@
+#popup {
+	display: none;
+	padding: 20px;
+	position: fixed;
+	width: 40%;
+	background-color: #F6F6F6;
+	top: 50px;
+	z-index: 2;
+	border: 1px solid #1D4088;
+}
+
+#login-popup {
+	display: none;
+	padding: 20px;
+	position: fixed;
+	width: 40%;
+	background-color: #F6F6F6;
+	top: 50px;
+	z-index: 2;
+	border: 1px solid #1D4088;
+}
+
+
+#popup form {
+	padding: 10px 0 0 0;
+	margin: 0;
+}
+
+#popup tr {
+	padding: 3px;
+}
+
+#popup .imp {
+	width: 100%;
+}
+
+#popup .imp input {
+	width: 100%;
+}
+
+#popup .label {
+	white-space: nowrap;
+}
+
+#popup input {
+	margin: 0;
+	resize: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.small {
+	padding-left: 2px;
+	font-size: x-small;
+}

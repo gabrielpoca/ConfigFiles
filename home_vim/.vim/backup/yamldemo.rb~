@@ -1,0 +1,34 @@
+#!/opt/local/bin/ruby
+
+require 'yaml'
+
+log="/Users/gabrielpoca/Projects/script/.pirate_log.yml"
+
+class Log
+	attr_accessor :file, :yml
+
+	def initialize(file)
+		@file = file
+		if(File.exist?(@file))
+			@yml = YAML::load_file(@file) || Array.new
+		else
+			@yml = Array.new
+		end
+	end
+
+	def new(stuff)
+		@yml.push stuff
+	end
+
+	def save
+		File.open(@file, 'w') do |out|
+			YAML.dump(@yml, out)
+		end
+	end
+end
+
+	search_save = Hash.new
+	search_save[Time.now.strftime("%d-%m-%Y %H:%M:%S ")] = ARGV.join(' ')
+	log = Log.new log_file
+	log.new search_save
+	log.save

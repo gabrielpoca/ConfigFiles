@@ -1,0 +1,15 @@
+filho(jose, pedro).
+filho(pedro, antonio).
+filho(luis, antonio).
+filho(jose, maria).
+descendente(X,Y):- filho(X,Y).
+descendente(X,Y):- filho(X,Z), descendente(Z,Y).
+
+% setof((X,Y), descendentes(X,Y), S).
+% setof((X), descendentes(X,_), S).
+
+nao(Q):- Q,!,fail.
+nao(Q).
+
+% filho(jose,X), nao(descendente(X,antonio)).
+

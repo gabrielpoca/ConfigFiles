@@ -1,0 +1,71 @@
+<?php
+
+   class UsersController extends AppController {
+
+	  var $uses = array('User');
+	  var $components = array('RequestHandler');
+	  var $scaffold;
+
+	  function beforeFilter() {
+		 parent::beforeFilter();
+		 /* If it is ajax request don't load template. */
+		 if($this->RequestHandler->isAjax()){
+			$this->layout=null;
+		 }
+	  }
+
+	  /**
+	  * view logged user information.
+	  */
+	  function view($id = null) {
+		 if($id != null) {
+			$this->set('data', $this->User->findById($id));
+		 }
+	  }
+
+	  /* Facebook Login Methods. */
+
+	  /**
+	  * user facebook login.
+	  */
+	  function login() {
+		 $this->autoRender = false;
+		 $params = array(
+			'scope' => 'user_photos, friends_photos',
+			'redirect_uri' => 'http://localhost:8888/hotbook/site/users/callback/'
+		 );
+		 $this->redirect($this->facebook->getLoginUrl($params));
+	  }
+
+	  /**
+	  * user facebook logout.
+	  */
+	  function logout() {
+		 $this->autoRender = false;
+		 $this->facebook->destroySession();
+		 $params = array( 'next' => 'http://localhost:8888/site/things/' );		
+		 $this->redirect($this->facebook->getLogoutUrl($params));
+	  }
+
+	  /**
+	  * facebook login callback.
+	  * stores the user in the database if not already.
+	  */
+	  function callback() {
+		 $this->autoRender = false;
+		 $this->facebook->getAccessToken();
+
+		 $newUser = $this->User->create();
+		 $data = $this->facebook->api('/me');
+		 $newUser['User']['id'] = $data['id'];
+		 $newUser['User']['name'] = $data['name'];
+		 $newUser['User']['picture'] = 'https://graph.facebook.com/'.$data['username'].'/picture';
+
+		 $this->User->save($newUser);
+
+		 $this->redirect(array('controller' => 'main', 'action' => 'index'));
+	  }
+
+   }
+
+?>

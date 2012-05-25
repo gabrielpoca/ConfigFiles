@@ -1,0 +1,47 @@
+CREATE TABLE log (
+	id		INT(11) PRIMARY KEY AUTO_INCREMENT,	
+	action	VARCHAR(150) NOT NULL,
+	date 	DATE NOT NULL
+);
+
+CREATE TABLE photos ( 
+	id      		VARCHAR(150) PRIMARY KEY NOT NULL UNIQUE,
+	name    		VARCHAR(150) NOT NULL,
+	picture 		VARCHAR(2083) NOT NULL,
+	source  		VARCHAR(2083) NOT NULL,
+	width   		INT(11) NOT NULL,
+	height  		INT(11) NOT NULL,
+	link    		VARCHAR(2083) NOT NULL,
+	available		BOOLEAN,
+	created		 	DATE NOT NULL,
+	hr				INT(11) NOT NULL,
+	fbuser_id 		VARCHAR(150) NOT NULL,
+	fbuser_comment 	TEXT
+);
+
+CREATE TABLE fbusers ( 
+	id      VARCHAR(150) PRIMARY KEY NOT NULL UNIQUE,
+	picture VARCHAR(2083) NOT NULL,
+	name    VARCHAR(150) NOT NULL 
+);
+
+CREATE TABLE users (
+	id 			INT(11) PRIMARY KEY AUTO_INCREMENT,
+	username 	VARCHAR(150) NOT NULL,
+	email 		VARCHAR(150) NOT NULL,
+	password 	VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE comments (
+	id			INT(11) PRIMARY KEY AUTO_INCREMENT,
+	photo_id	VARCHAR(150) NOT NULL,
+	fbuser_id	VARCHAR(150) NOT NULL,
+	comment		TEXT NOT NULL,
+	created		DATE NOT NULL
+);
+
+CREATE TABLE likes (
+	photo_id 		INT(11) NOT NULL,
+	fbuser_id		INT(11) NOT NULL,
+	PRIMARY KEY(photo_id, fbuser_id)
+);

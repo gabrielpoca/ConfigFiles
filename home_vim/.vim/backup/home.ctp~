@@ -1,0 +1,6 @@
+<?php
+require_once '/Applications/MAMP/htdocs/cakephp/app/Vendor/haml/HamlHelpers.php';
+?><?php require_once "/Applications/MAMP/htdocs/cakephp/app/vendors/markdown/markdown.php";$markdown___=new Markdown_Parser();echo $markdown___->transform("Here is some markdown
+===
+
+");?>

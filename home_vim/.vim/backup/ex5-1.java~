@@ -1,0 +1,24 @@
+class User {
+
+	String _name = "default";
+
+	public String getName() {
+		return _name;
+	}
+
+	public void setName(String name) {
+		_name = name;
+	}
+
+}
+
+
+class UserDatabase {
+
+	TreeMap<Integer,User> users;
+
+	public UserDatabase() {
+		users = new TreeMap<Integer,User>();
+	}
+
+}

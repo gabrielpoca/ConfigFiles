@@ -1,0 +1,9 @@
+<?php
+   require_once "class.iCalReader.php";
+   //$iCal = new ICal("tvcountdown.com/?c548=1&c41=1&amp;c29=1&amp;c241=1&amp;c19=1&amp;c416=1&amp;c2=1&amp;c98=1&amp;c126=1&amp;c3=1&amp;c79=1&format=ical");
+   $iCal = new ICal("ical.ics");
+   $events = $iCal->events();
+   foreach($events as $event) {
+	  echo $event['SUMMARY'].'\n';
+   }
+?>

@@ -1,0 +1,29 @@
+<?php
+   class ReportsController extends AppController {
+	  var $scaffold;
+
+	  function beforeFilter() {
+		 parent::beforeFilter();
+		 $restricted = array('add', 'index');
+		 if(!$this->user && in_array($this->request->params['action'], $restricted)) {
+			$this->redirect(array('controller' => 'pages', 'action' => 'login'));
+		 }
+	  }
+
+
+	  function add($photo_id = NULL) {
+		 if($photo_id != NULL) {
+			$newReport = $this->Report->create();
+			$newReport['fbuser_id'] = $this->user;
+			$newReport['photo_id'] = $photo_id;
+			$this->Report->save($newReport);
+			if($this->RequestHandler->isAjax()) {
+			   echo "1";
+			} else {
+				$this->Session->setFlash('Submited');
+		 	}
+		 }
+		 $this->redirect(array('controller' => 'photos', 'action' => 'index'));
+	  }
+   }
+?>

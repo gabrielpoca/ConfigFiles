@@ -1,0 +1,34 @@
+#!/opt/local/bin/ruby
+
+require 'matrix'
+
+class NewFN
+
+	attr_accessor :p, :r, :f, :new_f
+
+	def initialize (p, r, f)
+
+		if(! p.instance_of?(Matrix))
+		   raise "p is not instance of Matrix!"
+		elsif(! r.instance_of?(Matrix))
+			raise "r is not instance of Matrix!"
+		elsif(! f.instance_of?(Matrix))
+			raise "f is not instance of Matrix!"
+		end
+
+		@p = p
+		@r = r
+		@f = f
+	end
+
+	def calc
+		q = @p*@r
+		pf = @p*@f
+		puts pf.to_s
+		@new_f = q+pf
+	end
+
+end
+
+t = NewFN.new(Matrix[[1,2],[3,4]], Matrix[5,6], Matrix[9, 10])
+puts t.calc

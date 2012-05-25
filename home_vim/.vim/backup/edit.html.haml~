@@ -1,0 +1,54 @@
+%h1 Edit Event
+
+= form_for @event do |event_form|
+  %div
+    = event_form.label :name, "Event Name: "
+    = event_form.text_field :name
+
+  - @event.user.each do |user|
+    %div
+      %table
+        %tr
+          %td
+            = user.email
+          %td
+            = link_to "Remove", {:controller => 'events', :action => 'remove_user', :event_id => @event.id, :user_id => user.id }
+
+  - @event.place.each do |place|
+    %div
+      %table
+        %tr
+          %td
+            = place.name
+          %td
+            = link_to "Remove", :controller => 'events', :action => 'remove_place', :event_id => @event.id, :place_id => place.id
+
+  - @event.dinner.each do |dinner|
+    %div
+      %table
+        %tr
+          %td
+            = dinner.name
+          %td
+            = link_to "Remove", :controller => 'events', :action => 'remove_dinner', :event_id => @event.id, :dinner_id => dinner.id
+
+  = link_to 'Add User', :controller => 'events', :action => 'add_user', :id => @event.id
+
+  = link_to 'Add Dinner', :controller => 'events', :action => 'add_dinner', :id => @event.id
+
+  = link_to 'Add Place', :controller => 'events', :action => 'add_place', :id => @event.id
+
+  - @event.comment.each do |comment|
+    %div
+      %table
+        %tr
+          %td
+            = comment.user.name
+          %td
+            = comment.text
+
+  = link_to 'Add Comment', :controller => 'events', :action => 'add_comment', :id => @event.id
+
+  = event_form.submit 'Save'
+
+

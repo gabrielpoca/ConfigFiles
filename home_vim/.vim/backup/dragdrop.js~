@@ -1,0 +1,11 @@
+$(function() {
+	$(".cheese").draggable({
+		revert:'invalid'
+	});
+	$("#board[img]").droppable({
+		accept: '.cheese',
+		drop: function(ev, ui) {
+			console.log(ui);
+		}
+	});
+});

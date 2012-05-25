@@ -1,0 +1,10 @@
+--- 
+published: true
+tags: [media, osx]
+title: Free Media Keys from iTunes
+layout: post
+---
+ <img class="wp-image-90 alignleft" title="Why iTunes Sucks" src="/images/why_itunes_sucks-300x288.png" alt="" width="180" height="173" />This one is not really a tip for linux freaks, but anyway. OSX comes with annoying stuff, like iTunes, and when you press your media keys iTunes launches. 
+ <!-- more start -->
+Always! Even if there was other player running! This was getting into my head! So first thing I do is to remove iTunes. Sadly one day I updated the system and it came back! So I looked for a more permanent solution and I found this [link](http://lifehacker.com/5651055/free-your-macs-media-keys-from-itunes-no-manual-hacking-required). There is a simple one click patch to free the media keys from iTunes, take a look.
+ <!-- more end -->

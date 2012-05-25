@@ -1,0 +1,4 @@
+<?php
+		echo $token_url;
+		echo $this->facebook->getAccessToken();
+?>

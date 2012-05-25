@@ -1,0 +1,86 @@
+xiii -> Qual é o maior valor entre 1 e 3? 
+maior( 3,1,R ).
+R = 3
+
+xiv -> Qual é o maior valor entre 3 e 1?
+maior( 1,3,R ).
+R = 3 
+
+xv -> O maior valor entre 3 e 1 é menor do que 2? 
+maior( 3,1,R<2 ).
+no
+
+xvi -> É verdade que o João não é filho do Manuel? 
+nao( filho( joao,manuel) ).
+
+xvii -> É verdade que o João não é filho do José?  
+nao( filho( joao,jose ) ).
+
+xviii -> É verdade que o João não é descendente do José? 
+nao( descendente( joao,jose ) ).
+
+xix -> É verdade que o João não é descendente de 1º grau do José? 
+nao( descendente( joao,jose,1 ) ).
+
+xx -> O elemento b pertence à lista de elementos [a,b,c]? 
+pertence( b,[a,b,c] ).
+yes
+
+xxi -> O elemento 1 pertence à lista de elementos [a,b,c]? 
+pertence( 1,[a,b,c] ).
+no
+
+xxii -> Algum dos elementos pertencentes à lista [a,b,c] é o elemento b? 
+pertence( R,[a,b,c] ).
+R = a ? n
+R = b ? y
+yes
+
+xxiii -> Qual é o comprimento de uma lista vazia de elementos? 
+comprimento( [],R ).
+R = 0
+
+xxiv -> Qual é o resultado de apagar o elemento 2 da lista [a,b,c]?
+apagar( 2,[a,b,c],R ). 
+R = [a,b,c]
+
+xxv -> Qual é o resultado de apagar todos os elementos 2 da lista [a,b,c]? 
+apagartudo( 2,[a,b,c],R ).
+R = [a,b,c]
+
+xxvi ->  A concatenação da lista [1,2] com a lista [a,b,c] é [1,2,a,b,c]?
+concatenacao( [1,2],[a,b,c],[1,2,a,b,c]).
+yes
+
+xxvii ->  A lista [2,3] é uma sublista de [1,2,3,4,5]?
+sublista( [2,3],[1,2,3,4,5] ).
+yes
+
+xxviii ->  A lista [3,2] é uma sublista de [1,2,3,4,5]?
+sublista( [3,2],[1,2,3,4,5] ).
+no
+
+xxix ->  A lista [2,4] é uma sublista de [1,2,3,4,5]?
+sublista( [2,4],[1,2,3,4,5] ).
+no
+
+xxx. ->  Existe alguém que seja filho do José?
+filhos( L,jose ), quantos( L,R ), R>0.
+
+xxxi ->  Quem são os filhos do José?
+filhos( L,jose ).
+
+xxxii ->  Quantos são os filhos do José?
+filhos( L,jose ), quantos( L,R ). 
+
+xxxiii ->  Quem são os filhos do Manuel?
+filhos( L,manuel ). 
+
+xxxiv -> O Manuel tem mais de 2 filhos?
+filhos( L,manuel ), quantos( L,R ), R>2.
+
+xxxv -> Quem são os filhos do João?
+filhos( L, joao ).
+
+xxxvi ->  O João tem filhos? 
+filhos( L,joao ), quantos( L,R ), R>0.

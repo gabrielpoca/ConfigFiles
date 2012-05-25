@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			// Show Submit Popup
+			$('body').prepend("<div id='popup'><h3>TwoHotGirls<span id='hide' class='small'><a href='#'>hide</a></span></h3><table><tr><td class='label'><label>avaliable</label></td><td class='imp'><input type='checkbox' /></td></tr><tr><td class='label'><label>comment</label></td><td class='imp'><input type='text' /></td></tr><tr><td></td><td><input id='2hot-submit' type='submit' value='submit' /></td></tr></table><div class='clear'></div></div>");
+			$('#popup').show(300);
+			$('.2hot-link').unbind('click');
+			// OnClick Hide Event
+			$('#hide').click(function() {
+				$('#popup').hide(200);
+			});
+			// OnClick Submit Button Event
+			$('#2hot-submit').click(function() {
+				var user  = $('#fbPhotoPageAuthorName').find('a').attr('data-hovercard').match(/\d+$/)[0];
+				var name = $('#fbPhotoPageAuthorName').find('a').text();
+				var id = $(location).attr('href').match(/fbid=\d+/)[0].match(/\d+/)[0];
+				var source = $('.fbPhotoImage').attr('src');
+				var link = $(location).attr('href');
+				// Submit Photo
+				$.get('http://localhost/twohotgirls/photos/submit', {user:user, name:name, id:id, source:source, link:link}, function(data) {
+					$('#popup').hide(200);
+					if(data=="0") {
+						$('#fbxPhotoContentContainer').prepend("<div id='login-popup'><h3>Login First</h3><p>You have to login first in <a target='_blank' href='http://localhost/twohotgirls'>TwoHotGirls</a>.</p></div>");
+							$('#login-popup').find('a').click(function() {
+								$('#login-popup').hide(200);
+							});
+							$('#login-popup').show(300);
+					} else {
+						alert("Submited!");
+					}
+					return false;
+				});
+			});
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+

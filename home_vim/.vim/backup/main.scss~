@@ -1,0 +1,166 @@
+input:invalid {
+   -moz-box-shadow: none;
+}
+
+body {
+   margin: 0;
+   padding 0;
+   background: #EEEEEE;
+   font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
+}
+
+.logo {
+   margin: 20px 0 15px 0;
+   background: url('../img/logo.png') no-repeat;
+   width: 180px;
+   height: 167px;
+}
+
+.logo:hover {
+   background-image: url('../img/logohover.png');
+}
+
+/* CONTAINER: SIDEBER + SUBMIT + CONTENT + FOOTER */
+
+#container {
+   width:950px;
+   margin: 0 auto;
+   background: #fff;
+}
+
+/* RIGHT CONTAINER: SUBMIT + CONTENT */
+
+#right-container {
+   float:right;
+   border-left: 1px solid #CFCFCF;
+   width: 749px;
+}
+
+
+/* CONTENT */
+
+#content {
+   padding: 0 10px 0 10px;
+   background: #fff;
+   width:729px;
+}
+
+/* SUBMIT */
+
+#submit {
+   background: #eee;
+   padding: 10px;
+   width:729px;
+}
+
+#submit a:link, #submit a:visited {
+   text-decoration: none;
+   color:black;
+}
+
+#submit a:hover {
+   color: #FF9900;
+}
+
+#submit input.text {
+   width:590px;
+}
+
+#submit button {
+   width:70px;
+}
+
+#submit .submit-line {
+   width: 725px;
+   margin: 6px 0 0 0 ;
+}
+
+#submit #photo-submit-input-comment-span {
+   text-decoration: underline;
+}
+
+#submit #photo-submit-input-comment {
+   width: 450px;
+   display: inline;
+}
+
+
+/* SIDEBAR */
+
+#sidebar {
+   background: #FFF;
+   float:left;
+   width:180px;
+   padding: 0 10px 0 10px;
+}
+
+#sidebar ul {
+   margin: 0 0 0 0;
+   padding: 0;
+}
+
+#sidebar li  {
+   list-style: none;
+   text-decoration: none;
+   width: 170px;
+   display: block;
+   color: black;
+   background-color: #EEE;
+   margin: 0 0 3px 0;
+   padding: 2px 0 2px 10px;
+}
+
+#sidebar li:hover {
+   background-color: #FF9900;
+}
+
+#sidebar a, #sidebar a:visited {
+   color: black;
+   text-decoration: none;
+}
+
+/* FOOTER */ 
+
+#footer {
+   border-top: 1px solid #CFCFCF;
+   margin: 0 auto;
+   width: 950px;
+   text-align: center;
+   background: #fff;
+   font-size: small;
+   padding: 5px 0 5px 0;
+}
+
+
+.clear {
+   display:block;
+   clear:both;
+}
+
+.small {
+   font-size: small;
+}
+
+.left {
+   float: left;
+}
+
+.right {
+   float: right;
+}
+
+/* CONTACT FORM */
+
+#contact-form {
+	font-size: small;
+}
+
+#contact-form textarea {
+   width: 450px;
+   resize: none;
+}
+
+#contact-form label {
+   clear: both;
+}
+

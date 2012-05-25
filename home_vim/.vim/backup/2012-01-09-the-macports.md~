@@ -1,0 +1,36 @@
+--- 
+published: true
+tags: 
+- open source
+- software
+- unix
+status: publish
+type: post
+title: The MacPorts
+layout: post
+---
+One of the best things I found is [MacPorts](http://www.macports.org/). As it says "The MacPorts Project is an open-source community initiative to design an easy-to-use system for compiling, installing, and upgrading either command-line, X11 or Aqua based open-source software on the Mac OS X operating system". 
+<!-- more start -->
+For apt-get lovers, like myself, this is awesome. You get your equivalente to apt-get or yum or pacman or what else you like. Download the .dmg and you're ready to go.
+
+
+Here is a short list of apt-get commands in ports:
+
+<table>
+<tbody>
+<tr>
+<td><code>$ sudo apt-get update</code></td>
+<td><code>$ sudo port selfupdate</code></td>
+</tr>
+<tr>
+<td><code>$ sudo apt-get install cmus</code></td>
+<td><code>$ sudo port install cmus</code></td>
+</tr>
+<tr>
+<td><code>$ sudo apt-get remove cmus</code></td>
+<td><code>$ sudo port uninstall cmus</code></td>
+</tr>
+</tbody>
+</table>
+[Link](http://www.macports.org/)
+<!-- more end -->

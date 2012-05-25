@@ -1,0 +1,20 @@
+set from = "cette118@gmail.com"
+set realname = "Gabriel Poça"
+set imap_user = "cette118@gmail.com"
+set imap_pass = "reactivo."
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed ="+[Gmail]/Drafts"
+set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+set smtp_url = "smtp://cette118@smtp.gmail.com:587/"
+set smtp_pass = "reactivo."
+bind editor <space> noop
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+set move = no  #Stop asking to "move read messages to mbox"!
+set imap_keepalive = 900

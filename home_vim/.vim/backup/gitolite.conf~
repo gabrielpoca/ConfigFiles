@@ -1,0 +1,6 @@
+
+repo    gitolite-admin
+        RW+     =   pradeep
+
+repo    configfiles
+        RW+     =   gabrielpoca

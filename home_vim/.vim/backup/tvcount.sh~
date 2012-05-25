@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+# get the html
+#HTML=$(wget "http://tvcountdown.com/?c548=1&c41=1&c29=1&c241=1&c19=1&c416=1&c2=1&c98=1&c891=1&c126=1&c3=1&c79=1" -q -O -)
+HTML=$(cat index.html)
+
+LINES=$(echo $HTML | sed -n 's/\(<div class=\"[^"]*bc_t\"[^>]*>\)/\1/ p')
+echo $LINES

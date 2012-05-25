@@ -1,0 +1,20 @@
+#!/bin/bash
+
+nameToHtml() {
+	local name=$(echo $f | sed 's/haml/html/')
+	haml $f > $name
+}
+
+# if there is no argument convert all files in folder
+if [ $# -eq "0" ]; then
+	for f in *haml; do
+		if [ -f "$f" ]; then
+			nameToHtml $f
+		fi
+	done
+# else convert all arguments
+else
+	for f in $*; do
+		nameToHtml $f
+	done
+fi

@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/gabrielpoca/Projects/script'
+let g:netrw_dirhist_2='/Users/gabrielpoca/Projects/napsCC/eUDPFileSender'
+let g:netrw_dirhist_3='/Users/gabrielpoca/Projects/napsCC'
+let g:netrw_dirhist_4='/Users/gabrielpoca/Projects/rails_projects/aboutdinner'
+let g:netrw_dirhist_5='/Users/gabrielpoca/bin/startup.app'

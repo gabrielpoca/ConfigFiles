@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    = $this->Html->charset()
+    = $this->Html->css('960')
+    = $this->Html->css('screen')
+    = $this->Html->script('jquery.min')
+  %body.bp
+    .container_12
+      .grid_8#header
+        <strong>Gabriel Poca</strong> Engenharia Informática @ Universidade do Minho
+      .grid_2.nav#header
+        About
+      .grid_2.nav#header
+        Contacts
+      .grid_12#main_text
+        Welcome to my wall of interests.
+      .grid_2.wall
+        = $this->Html->image('vim.png');
+      .grid_2.wall
+        = $this->Html->image('cakephp.png');
+      .grid_2.wall
+        = $this->Html->image('haml.png');
+      .grid_2.wall
+        = $this->Html->image('cakephp.png');
+      .grid_2.other
+        = $this->Html->image('facebook.png');
+      .grid_2.other
+        = $this->Html->image('twitter.png');
+      .grid_12#footer
+        by Gabriel Poça

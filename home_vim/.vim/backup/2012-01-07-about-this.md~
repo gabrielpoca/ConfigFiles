@@ -1,0 +1,30 @@
+--- 
+meta: 
+  sharing_disabled: "1"
+  jabber_published: "1325947537"
+  _edit_last: "7949313"
+  _wpas_skip_twitter: "1"
+  switch_like_status: "1"
+published: true
+tags: 
+- about
+status: publish
+type: post
+title: About This
+layout: post
+---
+Short story of this blog.
+<!-- more start -->
+1. Go to University.
+2. Try Linux.
+3. Hate Linux.
+4. Love Linux.
+5. Get rid of Windows.
+6. Buy a Macbook Pro.
+7. Hate OSX.
+8. Hate yourself.
+9. Try not to get rid of OSX.
+10. Create a blog.
+
+I'm a linux Lover and married to the Terminal. This is how I find my way through OSX.
+<!-- more end -->
