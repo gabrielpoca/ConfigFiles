@@ -1,0 +1,4 @@
+[beets]
+directory: /Users/gabrielpoca/Music/Beets
+library: /Users/gabrielpoca/Music/Beets/musiclibrary.blb
+plugins = web cmus fetchart rdm

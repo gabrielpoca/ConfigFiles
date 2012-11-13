@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Rspec and Spork"
+date: 2012-09-28
+comments: true
+categories:
+---
+When the wait time was too much I found [Spork](https://github.com/sporkrb/spork). I've run `time rspec spec --drb` and here is the before and afeter.
+<!--more-->
+The before
+
+	Finished in 1.58 seconds
+	54 examples, 0 failures
+
+	real	0m6.372s
+	user	0m5.519s
+	sys	0m0.819s
+
+
+And after
+
+
+	Finished in 2.01 seconds
+	54 examples, 0 failures
+
+	real	0m2.568s
+	user	0m0.304s
+	sys	0m0.061s
+
+The after is about 30% of the before! Yes, it's worth it.

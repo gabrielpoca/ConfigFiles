@@ -1,0 +1,25 @@
+require 'rubygems'
+require 'awesome_print'
+
+$ap_options = {
+	:indent => 2
+}
+
+#awesome_print and IRB integration
+unless IRB.version.include? 'DietRB'
+	IRB::Irb.class_eval do 
+		def output_value
+			ap @context.last_value, $ap_options
+		end
+	end
+
+else
+	IRB.formatter = Class.new(IRB::Formatter) do
+		def inspect_object(object)
+			object.ai
+		end
+	end.new		
+end
+
+def copy(*args) IO.popen('pbcopy', 'r+') { |clipboard| clipboard.puts args.map(&:inspect) }; end
+

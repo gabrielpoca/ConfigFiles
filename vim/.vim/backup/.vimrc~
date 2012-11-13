@@ -71,7 +71,7 @@ filetype plugin on
 filetype on
 
 " NERDTree configuration
-let NERDTreeWinPos='right'
+let NERDTreeWinPos='left'
 let NERDTreeChDiMode=0
 " NERDTree autoclose on only window
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
